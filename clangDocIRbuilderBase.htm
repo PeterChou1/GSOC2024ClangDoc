@@ -1,0 +1,4188 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta charset="utf-8">
+<title>class IRBuilderBase</title>
+<link rel="stylesheet" href="clangDocIRbuilderBase_files/clang-doc-default-stylesheet.css">
+<script src="clangDocIRbuilderBase_files/index.js"></script>
+<script src="clangDocIRbuilderBase_files/index_json.js"></script>
+</head><body><header id="project-title"></header>
+<main>
+  <div id="sidebar-left" path="llvm" class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left"></div>
+  <div id="main-content" class="col-xs-12 col-sm-9 col-md-8 main-content">
+    <h1>class IRBuilderBase</h1>
+    <p>Defined at line 94 of file include\llvm/IR/IRBuilder.h</p>
+    <div>
+      <div>
+        <p> Common base class shared among various IRBuilders.</p>
+      </div>
+    </div>
+    <h2 id="Members">Members</h2>
+    <ul>
+      <li>
+        private 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/SmallVector.html">SmallVector</a>
+         MetadataToCopy
+      </li>
+      <li>protected BasicBlock * BB</li>
+      <li>
+        protected 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ilist_iterator_w_bits.html">ilist_iterator_w_bits</a>
+         InsertPt
+      </li>
+      <li>protected LLVMContext &amp; Context</li>
+      <li>protected const IRBuilderFolder &amp; Folder</li>
+      <li>protected const IRBuilderDefaultInserter &amp; Inserter</li>
+      <li>protected MDNode * DefaultFPMathTag</li>
+      <li>
+        protected 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/FastMathFlags.html">FastMathFlags</a>
+         FMF
+      </li>
+      <li>protected _Bool IsFPConstrained</li>
+      <li>
+        protected 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/fp/ExceptionBehavior.html">ExceptionBehavior</a>
+         DefaultConstrainedExcept
+      </li>
+      <li>
+        protected 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/RoundingMode.html">RoundingMode</a>
+         DefaultConstrainedRounding
+      </li>
+      <li>
+        protected 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         DefaultOperandBundles
+      </li>
+    </ul>
+    <h2 id="Records">Records</h2>
+    <ul>
+      <li>
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/IRBuilderBase/InsertPoint.html">InsertPoint</a>
+      </li>
+      <li>
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/IRBuilderBase/InsertPointGuard.html">InsertPointGuard</a>
+      </li>
+      <li>
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/IRBuilderBase/FastMathFlagGuard.html">FastMathFlagGuard</a>
+      </li>
+      <li>
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/IRBuilderBase/OperandBundlesGuard.html">OperandBundlesGuard</a>
+      </li>
+    </ul>
+    <h2 id="Functions">Functions</h2>
+    <div>
+      <h3 id="158A690CE92B3AF4B2C1F525A3FCA35D8E008C8F">AddOrRemoveMetadataToCopy</h3>
+      <p>private void AddOrRemoveMetadataToCopy(unsigned int Kind, MDNode * MD)</p>
+      <p>Defined at line 101 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Add or update the an entry (Kind, MD) to MetadataToCopy, if  is not null. If  is null, remove the entry with </p>
+        </div>
+      </div>
+      <h3 id="E39514368069D39D484AC04F602C8E5BB6254D32">IRBuilderBase</h3>
+      <p>
+        public void IRBuilderBase(LLVMContext &amp; context, const 
+IRBuilderFolder &amp; Folder, const IRBuilderDefaultInserter &amp; 
+Inserter, MDNode * FPMathTag, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         OpBundles)
+      </p>
+      <p>Defined at line 135 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="7B1288A37BBE5C3713FD4B648686A729CC6D474F">Insert</h3>
+      <p>public InstTy * Insert(InstTy * I, const Twine &amp; Name)</p>
+      <p>Defined at line 145 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Insert and return the specified instruction.</p>
+        </div>
+      </div>
+      <h3 id="C2A36C19D1CF4598AB717E3EEB138553FC688C18">Insert</h3>
+      <p>public Constant * Insert(Constant * C, const Twine &amp; )</p>
+      <p>Defined at line 152 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> No-op overload to handle constants.</p>
+        </div>
+      </div>
+      <h3 id="04A916F2D17F47D7875F7730A2CD89241AD28AA0">Insert</h3>
+      <p>public Value * Insert(Value * V, const Twine &amp; Name)</p>
+      <p>Defined at line 156 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="CFE512771B15ACDF6A8BEF2278BE3A3F3855EFDB">ClearInsertionPoint</h3>
+      <p>public void ClearInsertionPoint()</p>
+      <p>Defined at line 169 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Clear the insertion point: created instructions will not be inserted into a block.</p>
+        </div>
+      </div>
+      <h3 id="725D1346BA95E1E57FE390BD35B935DB3AA55CB8">GetInsertBlock</h3>
+      <p>public BasicBlock * GetInsertBlock()</p>
+      <p>Defined at line 174 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="6DF0E7408D0441A8E98C6A1E83620E2FDDBB8F67">GetInsertPoint</h3>
+      <p>
+        public 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ilist_iterator_w_bits.html">ilist_iterator_w_bits</a>
+         GetInsertPoint()
+      </p>
+      <p>Defined at line 175 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="B9F1EEBA7E4DCA869D3C9C62D095D81ECC480E80">getContext</h3>
+      <p>public LLVMContext &amp; getContext()</p>
+      <p>Defined at line 176 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="AA68C3B2DDCE58568C746365A359343EA725C063">SetInsertPoint</h3>
+      <p>public void SetInsertPoint(BasicBlock * TheBB)</p>
+      <p>Defined at line 180 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> This specifies that created instructions should be appended to the end of the specified block.</p>
+        </div>
+      </div>
+      <h3 id="A45576B4E7904AC5C679544EFAC22182A4D984D3">SetInsertPoint</h3>
+      <p>public void SetInsertPoint(Instruction * I)</p>
+      <p>Defined at line 187 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> This specifies that created instructions should be inserted before the specified instruction.</p>
+        </div>
+      </div>
+      <h3 id="451B88757A5D0CD1FE6ABF2D2BBA32A7850A2AE0">SetInsertPoint</h3>
+      <p>
+        public void SetInsertPoint(BasicBlock * TheBB, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ilist_iterator_w_bits.html">ilist_iterator_w_bits</a>
+         IP)
+      </p>
+      <p>Defined at line 196 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> This specifies that created instructions should be inserted at the specified point.</p>
+        </div>
+      </div>
+      <h3 id="4531581AD6614C5D749FE191E6106328464970C8">SetInsertPoint</h3>
+      <p>
+        public void SetInsertPoint(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ilist_iterator_w_bits.html">ilist_iterator_w_bits</a>
+         IP)
+      </p>
+      <p>Defined at line 205 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> This specifies that created instructions should be inserted at the specified point, but also requires that  is dereferencable.</p>
+        </div>
+      </div>
+      <h3 id="6FD927D35A01719EBAF8ACE2B37BFAB35EED9D7C">SetInsertPointPastAllocas</h3>
+      <p>public void SetInsertPointPastAllocas(Function * F)</p>
+      <p>Defined at line 214 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> This specifies that created instructions should inserted 
+at the beginning end of the specified function, but after already 
+existing static alloca instructions that are at the start.</p>
+        </div>
+      </div>
+      <h3 id="720FFE6561B1C4645FBA7ED00F4347696AC3F80A">SetCurrentDebugLocation</h3>
+      <p>
+        public void SetCurrentDebugLocation(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/DebugLoc.html">DebugLoc</a>
+         L)
+      </p>
+      <p>Defined at line 220 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Set location information used by debugging information.</p>
+        </div>
+      </div>
+      <h3 id="6E71CCBFA1869E1D6513DF790C5BED0864FF03BA">CollectMetadataToCopy</h3>
+      <p>
+        public void CollectMetadataToCopy(Instruction * Src, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         MetadataKinds)
+      </p>
+      <p>Defined at line 227 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Collect metadata with IDs  from  which should be added to 
+all created instructions. Entries present in MedataDataToCopy but not on
+  will be dropped from MetadataToCopy.</p>
+        </div>
+      </div>
+      <h3 id="DDF9C8FEC459C527D86631B01ACB6BEF2A5EABB8">getCurrentDebugLocation</h3>
+      <p>
+        public 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/DebugLoc.html">DebugLoc</a>
+         getCurrentDebugLocation()
+      </p>
+      <div>
+        <div>
+          <p> Get location information used by debugging information.</p>
+        </div>
+      </div>
+      <h3 id="5F11F760F906E2C611A2B34265BF79109DA90E7C">SetInstDebugLocation</h3>
+      <p>public void SetInstDebugLocation(Instruction * I)</p>
+      <div>
+        <div>
+          <p> If this builder has a current debug location, set it on the specified instruction.</p>
+        </div>
+      </div>
+      <h3 id="2ACAC97BE22809074B26D951901F9AA1AF0584A5">AddMetadataToInst</h3>
+      <p>public void AddMetadataToInst(Instruction * I)</p>
+      <p>Defined at line 241 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Add all entries in MetadataToCopy to </p>
+        </div>
+      </div>
+      <h3 id="55A2246E8788497C0199787CC5D584152594FBFD">getCurrentFunctionReturnType</h3>
+      <p>public Type * getCurrentFunctionReturnType()</p>
+      <div>
+        <div>
+          <p> Get the return type of the current function that we're emitting into.</p>
+        </div>
+      </div>
+      <h3 id="3776D8928B9677DCBB6C9BD6241658A5856E9086">saveIP</h3>
+      <p>
+        public 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/IRBuilderBase/InsertPoint.html">InsertPoint</a>
+         saveIP()
+      </p>
+      <p>Defined at line 271 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Returns the current insert point.</p>
+        </div>
+      </div>
+      <h3 id="2DE4EBCBD94FF0A43CBB8492B52C8BBFEBCCD930">saveAndClearIP</h3>
+      <p>
+        public 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/IRBuilderBase/InsertPoint.html">InsertPoint</a>
+         saveAndClearIP()
+      </p>
+      <p>Defined at line 276 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Returns the current insert point, clearing it in the process.</p>
+        </div>
+      </div>
+      <h3 id="60262D04DB15E3711DD2B45023AE2A9A234B3576">restoreIP</h3>
+      <p>
+        public void restoreIP(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/IRBuilderBase/InsertPoint.html">InsertPoint</a>
+         IP)
+      </p>
+      <p>Defined at line 283 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Sets the current insert point to a previously-saved location.</p>
+        </div>
+      </div>
+      <h3 id="39F7E1688E9E34C3ACB083D2ADF318EC54455433">getDefaultFPMathTag</h3>
+      <p>public MDNode * getDefaultFPMathTag()</p>
+      <p>Defined at line 291 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Get the floating point math metadata being used.</p>
+        </div>
+      </div>
+      <h3 id="A2FC54ECD9964FAFE05AD310B10390C25173A950">getFastMathFlags</h3>
+      <p>
+        public 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/FastMathFlags.html">FastMathFlags</a>
+         getFastMathFlags()
+      </p>
+      <p>Defined at line 294 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Get the flags to be applied to created floating point ops</p>
+        </div>
+      </div>
+      <h3 id="B02A838C5DDA77148C5403C8D8A743409BBA16E0">getFastMathFlags</h3>
+      <p>public FastMathFlags &amp; getFastMathFlags()</p>
+      <p>Defined at line 296 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="6CE0DAE2765C811E508BBE8D2B83907FC6DA0654">clearFastMathFlags</h3>
+      <p>public void clearFastMathFlags()</p>
+      <p>Defined at line 299 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Clear the fast-math flags.</p>
+        </div>
+      </div>
+      <h3 id="A18ED64562EA7FAEB00D42AEBBCDE5BDA0262288">setDefaultFPMathTag</h3>
+      <p>public void setDefaultFPMathTag(MDNode * FPMathTag)</p>
+      <p>Defined at line 302 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Set the floating point math metadata to be used.</p>
+        </div>
+      </div>
+      <h3 id="E6DC1AE90593488A55CA54C0A048718EAA070F9C">setFastMathFlags</h3>
+      <p>
+        public void setFastMathFlags(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/FastMathFlags.html">FastMathFlags</a>
+         NewFMF)
+      </p>
+      <p>Defined at line 305 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Set the fast-math flags to be used with generated fp-math operators</p>
+        </div>
+      </div>
+      <h3 id="50B233455E3633A81DDB2DE255BD7C1715852CBE">setIsFPConstrained</h3>
+      <p>public void setIsFPConstrained(_Bool IsCon)</p>
+      <p>Defined at line 311 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Enable/Disable use of constrained floating point math. 
+When enabled the CreateF&lt;op&gt;() calls instead create constrained 
+floating point intrinsic calls. Fast math flags are unaffected by this 
+setting.</p>
+        </div>
+      </div>
+      <h3 id="D2D3AFE63CBB4DACFD1814392AEC5546322D01EE">getIsFPConstrained</h3>
+      <p>public _Bool getIsFPConstrained()</p>
+      <p>Defined at line 314 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Query for the use of constrained floating point math</p>
+        </div>
+      </div>
+      <h3 id="F8EE48031647AA44E0E95731E56AB72A6D77AF71">setDefaultConstrainedExcept</h3>
+      <p>
+        public void setDefaultConstrainedExcept(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/fp/ExceptionBehavior.html">ExceptionBehavior</a>
+         NewExcept)
+      </p>
+      <p>Defined at line 317 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Set the exception handling to be used with constrained floating point</p>
+        </div>
+      </div>
+      <h3 id="5D251745C6977F9CB757DD93EACD3AD7659002C5">setDefaultConstrainedRounding</h3>
+      <p>
+        public void setDefaultConstrainedRounding(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/RoundingMode.html">RoundingMode</a>
+         NewRounding)
+      </p>
+      <p>Defined at line 327 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Set the rounding mode handling to be used with constrained floating point</p>
+        </div>
+      </div>
+      <h3 id="78352E0155705AB6AAD6EE59BFE1C8A48E5F9F4B">getDefaultConstrainedExcept</h3>
+      <p>
+        public 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/fp/ExceptionBehavior.html">ExceptionBehavior</a>
+         getDefaultConstrainedExcept()
+      </p>
+      <p>Defined at line 337 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Get the exception handling used with constrained floating point</p>
+        </div>
+      </div>
+      <h3 id="476D6B2C70BA25FC2F34EA9DABA19C1A97A97CDD">getDefaultConstrainedRounding</h3>
+      <p>
+        public 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/RoundingMode.html">RoundingMode</a>
+         getDefaultConstrainedRounding()
+      </p>
+      <p>Defined at line 342 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Get the rounding mode handling used with constrained floating point</p>
+        </div>
+      </div>
+      <h3 id="97BAC13ABE4CD2CFF464CD0B7E9A85EFDD3BB7C9">setConstrainedFPFunctionAttr</h3>
+      <p>public void setConstrainedFPFunctionAttr()</p>
+      <p>Defined at line 346 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="B75619C832CBC58B9D0DB306B4F2F3C1218834B4">setConstrainedFPCallAttr</h3>
+      <p>public void setConstrainedFPCallAttr(CallBase * I)</p>
+      <p>Defined at line 355 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="B7ECE5B3C5923BF159128A8F09B5C85898C27D50">setDefaultOperandBundles</h3>
+      <p>
+        public void setDefaultOperandBundles(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         OpBundles)
+      </p>
+      <p>Defined at line 359 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="D9389D831CE65E5DDD76B044DB386DF6B4BC72E9">CreateGlobalString</h3>
+      <p>
+        public GlobalVariable * CreateGlobalString(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/StringRef.html">StringRef</a>
+         Str, const Twine &amp; Name, unsigned int AddressSpace, Module * M)
+      </p>
+      <div>
+        <div>
+          <p> Make a new global variable with initializer type i8*</p>
+          <p> Make a new global variable with an initializer that has 
+array of i8 type filled in with the null terminated string value 
+specified.  The new global variable will be marked mergable with any 
+others of the same contents.  If Name is specified, it is the name of 
+the global variable created.</p>
+          <p> If no module is given via  it is take from the insertion point basic block.</p>
+        </div>
+      </div>
+      <h3 id="135D7220988EB8F51E527D34D7412B2F4EFB568A">getInt1</h3>
+      <p>public ConstantInt * getInt1(_Bool V)</p>
+      <p>Defined at line 455 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Get a constant value representing either true or false.</p>
+        </div>
+      </div>
+      <h3 id="94FADB0E0716D3E79A6875E016B02229D4584DA3">getTrue</h3>
+      <p>public ConstantInt * getTrue()</p>
+      <p>Defined at line 460 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Get the constant value for i1 true.</p>
+        </div>
+      </div>
+      <h3 id="07198F0AB3182EED9506019EC9064F8511D8778E">getFalse</h3>
+      <p>public ConstantInt * getFalse()</p>
+      <p>Defined at line 465 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Get the constant value for i1 false.</p>
+        </div>
+      </div>
+      <h3 id="583D9DE28AE276A01A3402873F9625BFCDC7B122">getInt8</h3>
+      <p>public ConstantInt * getInt8(uint8_t C)</p>
+      <p>Defined at line 470 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Get a constant 8-bit value.</p>
+        </div>
+      </div>
+      <h3 id="6641607721E77EEAA17AAA34642F6AF1E2D4570D">getInt16</h3>
+      <p>public ConstantInt * getInt16(uint16_t C)</p>
+      <p>Defined at line 475 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Get a constant 16-bit value.</p>
+        </div>
+      </div>
+      <h3 id="D582B3E55E7047B86343F9F99D5B0968CDC37AF4">getInt32</h3>
+      <p>public ConstantInt * getInt32(uint32_t C)</p>
+      <p>Defined at line 480 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Get a constant 32-bit value.</p>
+        </div>
+      </div>
+      <h3 id="BD98D8FC19DB6C662CE6DDFB18F0D2F0F03730DF">getInt64</h3>
+      <p>public ConstantInt * getInt64(uint64_t C)</p>
+      <p>Defined at line 485 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Get a constant 64-bit value.</p>
+        </div>
+      </div>
+      <h3 id="09E3953C68039222A7ECB41BD642D261A76F51F8">getIntN</h3>
+      <p>public ConstantInt * getIntN(unsigned int N, uint64_t C)</p>
+      <p>Defined at line 491 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Get a constant N-bit value, zero extended or truncated from a 64-bit value.</p>
+        </div>
+      </div>
+      <h3 id="2251C613AA60C1CD8A033B8866F1960E262845A9">getInt</h3>
+      <p>public ConstantInt * getInt(const APInt &amp; AI)</p>
+      <p>Defined at line 496 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Get a constant integer value.</p>
+        </div>
+      </div>
+      <h3 id="86D8E17649F97C7F00C064B81634E69E911485FF">getInt1Ty</h3>
+      <p>public IntegerType * getInt1Ty()</p>
+      <p>Defined at line 505 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Fetch the type representing a single bit</p>
+        </div>
+      </div>
+      <h3 id="2A09D177CA5DDF0F60F23EFE604940591CCE2FAD">getInt8Ty</h3>
+      <p>public IntegerType * getInt8Ty()</p>
+      <p>Defined at line 510 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Fetch the type representing an 8-bit integer.</p>
+        </div>
+      </div>
+      <h3 id="35F3F728306627321F2F5A5972E76C7A413FEB39">getInt16Ty</h3>
+      <p>public IntegerType * getInt16Ty()</p>
+      <p>Defined at line 515 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Fetch the type representing a 16-bit integer.</p>
+        </div>
+      </div>
+      <h3 id="C87E329FDCAE685295600AF5E920FE813C42C9BE">getInt32Ty</h3>
+      <p>public IntegerType * getInt32Ty()</p>
+      <p>Defined at line 520 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Fetch the type representing a 32-bit integer.</p>
+        </div>
+      </div>
+      <h3 id="2DA6321FA0B2635A365B1A0A1ABE4374720092C3">getInt64Ty</h3>
+      <p>public IntegerType * getInt64Ty()</p>
+      <p>Defined at line 525 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Fetch the type representing a 64-bit integer.</p>
+        </div>
+      </div>
+      <h3 id="5009163770E8FCFD7E869604FF4E90D995E9A29B">getInt128Ty</h3>
+      <p>public IntegerType * getInt128Ty()</p>
+      <p>Defined at line 530 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Fetch the type representing a 128-bit integer.</p>
+        </div>
+      </div>
+      <h3 id="B86F54D6FC72B0F16DAAE61A4FBA227DC32E0B8C">getIntNTy</h3>
+      <p>public IntegerType * getIntNTy(unsigned int N)</p>
+      <p>Defined at line 533 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Fetch the type representing an N-bit integer.</p>
+        </div>
+      </div>
+      <h3 id="121886A0ED92742EFFEB69E4E75B8C188090EAD6">getHalfTy</h3>
+      <p>public Type * getHalfTy()</p>
+      <p>Defined at line 538 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Fetch the type representing a 16-bit floating point value.</p>
+        </div>
+      </div>
+      <h3 id="03963CDCC3ACE02934FE49C308079808DDDEC694">getBFloatTy</h3>
+      <p>public Type * getBFloatTy()</p>
+      <p>Defined at line 543 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Fetch the type representing a 16-bit brain floating point value.</p>
+        </div>
+      </div>
+      <h3 id="02AAE5DB1BE86E9D7053885E0FBAEE04D37232C6">getFloatTy</h3>
+      <p>public Type * getFloatTy()</p>
+      <p>Defined at line 548 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Fetch the type representing a 32-bit floating point value.</p>
+        </div>
+      </div>
+      <h3 id="D1FCBDA248FCA572D2B1D0B5E68B0FD25773C37A">getDoubleTy</h3>
+      <p>public Type * getDoubleTy()</p>
+      <p>Defined at line 553 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Fetch the type representing a 64-bit floating point value.</p>
+        </div>
+      </div>
+      <h3 id="1780C73999E3E892A0B4E01160D6600E16E14419">getVoidTy</h3>
+      <p>public Type * getVoidTy()</p>
+      <p>Defined at line 558 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Fetch the type representing void.</p>
+        </div>
+      </div>
+      <h3 id="7B49E43B690E4F8CAFF94D136062EA172D9C0A47">getPtrTy</h3>
+      <p>public PointerType * getPtrTy(unsigned int AddrSpace)</p>
+      <p>Defined at line 563 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Fetch the type representing a pointer.</p>
+        </div>
+      </div>
+      <h3 id="243F26EF39926559F7EADEBE82626231C7D18B5D">getIntPtrTy</h3>
+      <p>public IntegerType * getIntPtrTy(const DataLayout &amp; DL, unsigned int AddrSpace)</p>
+      <p>Defined at line 569 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Fetch the type of an integer with size at least as big as that of a pointer in the given address space.</p>
+        </div>
+      </div>
+      <h3 id="68323C41A2DBD3B44DB6DBD32AB61D992F40B3B2">getIndexTy</h3>
+      <p>public IntegerType * getIndexTy(const DataLayout &amp; DL, unsigned int AddrSpace)</p>
+      <p>Defined at line 575 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Fetch the type of an integer that should be used to index GEP operations within AddressSpace.</p>
+        </div>
+      </div>
+      <h3 id="A71A4180E4A1CBB713D52BD852794E1EB1DBCED4">CreateMemSet</h3>
+      <p>
+        public CallInst * CreateMemSet(Value * Ptr, Value * Val, uint64_t Size, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/MaybeAlign.html">MaybeAlign</a>
+         Align, _Bool isVolatile, MDNode * TBAATag, MDNode * ScopeTag, MDNode * NoAliasTag)
+      </p>
+      <p>Defined at line 589 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Create and insert a memset to the specified pointer and the specified value.</p>
+          <p> If the pointer isn't an i8*, it will be converted. If a 
+TBAA tag is specified, it will be added to the instruction. Likewise 
+with alias.scope and noalias tags.</p>
+        </div>
+      </div>
+      <h3 id="B50FF94C7A78983744B56F1A06F860A9B0C37F40">CreateMemSet</h3>
+      <p>
+        public CallInst * CreateMemSet(Value * Ptr, Value * Val, Value * Size, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/MaybeAlign.html">MaybeAlign</a>
+         Align, _Bool isVolatile, MDNode * TBAATag, MDNode * ScopeTag, MDNode * NoAliasTag)
+      </p>
+      <h3 id="17247D1FA879A83A4CDB6F1853AB45E8332EDF35">CreateMemSetInline</h3>
+      <p>
+        public CallInst * CreateMemSetInline(Value * Dst, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/MaybeAlign.html">MaybeAlign</a>
+         DstAlign, Value * Val, Value * Size, _Bool IsVolatile, MDNode * TBAATag, MDNode * ScopeTag, MDNode * NoAliasTag)
+      </p>
+      <h3 id="DDAB876A6EFA561203C8286BAB2DC7A1DF47F320">CreateElementUnorderedAtomicMemSet</h3>
+      <p>
+        public CallInst * CreateElementUnorderedAtomicMemSet(Value * Ptr, Value * Val, uint64_t Size, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/Align.html">Align</a>
+         Alignment, uint32_t ElementSize, MDNode * TBAATag, MDNode * ScopeTag, MDNode * NoAliasTag)
+      </p>
+      <p>Defined at line 614 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Create and insert an element unordered-atomic memset of the region of memory starting at the given pointer to the given value.</p>
+          <p> If the pointer isn't an i8*, it will be converted. If a 
+TBAA tag is specified, it will be added to the instruction. Likewise 
+with alias.scope and noalias tags.</p>
+        </div>
+      </div>
+      <h3 id="573CD75DFE238342FFDD56D511E0AE642F5C669F">CreateMalloc</h3>
+      <p>
+        public CallInst * CreateMalloc(Type * IntPtrTy, Type * AllocTy, Value * AllocSize, Value * ArraySize, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         OpB, Function * MallocF, const Twine &amp; Name)
+      </p>
+      <h3 id="ECD1978CEAFBFAFE106E5A070347618080EE7A65">CreateMalloc</h3>
+      <p>public CallInst * CreateMalloc(Type * IntPtrTy, Type * AllocTy,
+ Value * AllocSize, Value * ArraySize, Function * MallocF, const Twine 
+&amp; Name)</p>
+      <div>
+        <div>
+          <p> CreateMalloc - Generate the IR for a call to malloc: 1. 
+Compute the malloc call's argument as the specified type's size,    
+possibly multiplied by the array size if the array size is not    
+constant 1. 2. Call malloc with that argument.</p>
+        </div>
+      </div>
+      <h3 id="D23AF284A559490D7A7E7C3F8D1DD2A267E7D2A3">CreateFree</h3>
+      <p>
+        public CallInst * CreateFree(Value * Source, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         Bundles)
+      </p>
+      <div>
+        <div>
+          <p> Generate the IR for a call to the builtin free function.</p>
+        </div>
+      </div>
+      <h3 id="363152B2CD628AF3A1A6559D8D283107BA7B5989">CreateElementUnorderedAtomicMemSet</h3>
+      <p>
+        public CallInst * CreateElementUnorderedAtomicMemSet(Value * Ptr, Value * Val, Value * Size, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/Align.html">Align</a>
+         Alignment, uint32_t ElementSize, MDNode * TBAATag, MDNode * ScopeTag, MDNode * NoAliasTag)
+      </p>
+      <h3 id="FAB37C2FBAFA32545EE7A8FBA5E3E63EEE7D0D7E">CreateMemCpy</h3>
+      <p>
+        public CallInst * CreateMemCpy(Value * Dst, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/MaybeAlign.html">MaybeAlign</a>
+         DstAlign, Value * Src, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/MaybeAlign.html">MaybeAlign</a>
+         SrcAlign, uint64_t Size, _Bool isVolatile, MDNode * TBAATag, 
+MDNode * TBAAStructTag, MDNode * ScopeTag, MDNode * NoAliasTag)
+      </p>
+      <p>Defined at line 653 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Create and insert a memcpy between the specified pointers.</p>
+          <p> If the pointers aren't i8*, they will be converted.  If a 
+TBAA tag is specified, it will be added to the instruction. Likewise 
+with alias.scope and noalias tags.</p>
+        </div>
+      </div>
+      <h3 id="F1D3FA5EE142A52F819020EDD76E6A9470766935">CreateMemTransferInst</h3>
+      <p>
+        public CallInst * CreateMemTransferInst(Intrinsic::ID IntrID, Value * Dst, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/MaybeAlign.html">MaybeAlign</a>
+         DstAlign, Value * Src, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/MaybeAlign.html">MaybeAlign</a>
+         SrcAlign, Value * Size, _Bool isVolatile, MDNode * TBAATag, 
+MDNode * TBAAStructTag, MDNode * ScopeTag, MDNode * NoAliasTag)
+      </p>
+      <h3 id="7EE5B24A37DD3C7BC5B9BAAA64BCE5340E2F7AB9">CreateMemCpy</h3>
+      <p>
+        public CallInst * CreateMemCpy(Value * Dst, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/MaybeAlign.html">MaybeAlign</a>
+         DstAlign, Value * Src, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/MaybeAlign.html">MaybeAlign</a>
+         SrcAlign, Value * Size, _Bool isVolatile, MDNode * TBAATag, 
+MDNode * TBAAStructTag, MDNode * ScopeTag, MDNode * NoAliasTag)
+      </p>
+      <p>Defined at line 670 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="1E4D4C7D6DA5646F6ED64D9A8BF0EBA35529FAC6">CreateMemCpyInline</h3>
+      <p>
+        public CallInst * CreateMemCpyInline(Value * Dst, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/MaybeAlign.html">MaybeAlign</a>
+         DstAlign, Value * Src, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/MaybeAlign.html">MaybeAlign</a>
+         SrcAlign, Value * Size, _Bool isVolatile, MDNode * TBAATag, 
+MDNode * TBAAStructTag, MDNode * ScopeTag, MDNode * NoAliasTag)
+      </p>
+      <p>Defined at line 681 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="3753DCC5572C8DEC792F631E22A8C2D4BAB20D13">CreateElementUnorderedAtomicMemCpy</h3>
+      <p>
+        public CallInst * CreateElementUnorderedAtomicMemCpy(Value * Dst, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/Align.html">Align</a>
+         DstAlign, Value * Src, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/Align.html">Align</a>
+         SrcAlign, Value * Size, uint32_t ElementSize, MDNode * TBAATag,
+ MDNode * TBAAStructTag, MDNode * ScopeTag, MDNode * NoAliasTag)
+      </p>
+      <div>
+        <div>
+          <p> Create and insert an element unordered-atomic memcpy between the specified pointers.</p>
+          <p> DstAlign/SrcAlign are the alignments of the Dst/Src pointers, respectively.</p>
+          <p> If the pointers aren't i8*, they will be converted.  If a 
+TBAA tag is specified, it will be added to the instruction. Likewise 
+with alias.scope and noalias tags.</p>
+        </div>
+      </div>
+      <h3 id="39D30366F0ECF0E31C9C0C3AD58E395EAE8BC88A">CreateMemMove</h3>
+      <p>
+        public CallInst * CreateMemMove(Value * Dst, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/MaybeAlign.html">MaybeAlign</a>
+         DstAlign, Value * Src, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/MaybeAlign.html">MaybeAlign</a>
+         SrcAlign, uint64_t Size, _Bool isVolatile, MDNode * TBAATag, MDNode * ScopeTag, MDNode * NoAliasTag)
+      </p>
+      <p>Defined at line 705 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="8B1FFF9B8A44749AF8DBF8FEAC50767B7F8E3EB0">CreateMemMove</h3>
+      <p>
+        public CallInst * CreateMemMove(Value * Dst, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/MaybeAlign.html">MaybeAlign</a>
+         DstAlign, Value * Src, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/MaybeAlign.html">MaybeAlign</a>
+         SrcAlign, Value * Size, _Bool isVolatile, MDNode * TBAATag, MDNode * ScopeTag, MDNode * NoAliasTag)
+      </p>
+      <p>Defined at line 714 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="D31FDB537BFFEC170BBB610EF27ADC3D95B31438">CreateElementUnorderedAtomicMemMove</h3>
+      <p>
+        public CallInst * CreateElementUnorderedAtomicMemMove(Value * Dst, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/Align.html">Align</a>
+         DstAlign, Value * Src, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/Align.html">Align</a>
+         SrcAlign, Value * Size, uint32_t ElementSize, MDNode * TBAATag,
+ MDNode * TBAAStructTag, MDNode * ScopeTag, MDNode * NoAliasTag)
+      </p>
+      <div>
+        <div>
+          <p> DstAlign/SrcAlign are the alignments of the Dst/Src pointers, respectively.</p>
+          <p> If the pointers aren't i8*, they will be converted.  If a 
+TBAA tag is specified, it will be added to the instruction. Likewise 
+with alias.scope and noalias tags.</p>
+        </div>
+      </div>
+      <h3 id="24F10BF667B148A3C3EC1D613BC656331D081525">getReductionIntrinsic</h3>
+      <p>private CallInst * getReductionIntrinsic(Intrinsic::ID ID, Value * Src)</p>
+      <h3 id="431BC1091D90F3DC8F522C4423AB5715F334D76A">CreateFAddReduce</h3>
+      <p>public CallInst * CreateFAddReduce(Value * Acc, Value * Src)</p>
+      <div>
+        <div>
+          <p> Create a sequential vector fadd reduction intrinsic of the
+ source vector. The first parameter is a scalar accumulator value. An 
+unordered reduction can be created by adding the reassoc fast-math flag 
+to the resulting sequential reduction.</p>
+        </div>
+      </div>
+      <h3 id="F8CC0220701E32D0073F621F99EE7141E1B21BC7">CreateFMulReduce</h3>
+      <p>public CallInst * CreateFMulReduce(Value * Acc, Value * Src)</p>
+      <div>
+        <div>
+          <p> Create a sequential vector fmul reduction intrinsic of the
+ source vector. The first parameter is a scalar accumulator value. An 
+unordered reduction can be created by adding the reassoc fast-math flag 
+to the resulting sequential reduction.</p>
+        </div>
+      </div>
+      <h3 id="0AE15FDBFEDB70AAEE2775BA08D56F8F7AE522F4">CreateAddReduce</h3>
+      <p>public CallInst * CreateAddReduce(Value * Src)</p>
+      <div>
+        <div>
+          <p> Create a vector int add reduction intrinsic of the source vector.</p>
+        </div>
+      </div>
+      <h3 id="D6D92985FEBDDDC1095C1813FEB75906EF4559D6">CreateMulReduce</h3>
+      <p>public CallInst * CreateMulReduce(Value * Src)</p>
+      <div>
+        <div>
+          <p> Create a vector int mul reduction intrinsic of the source vector.</p>
+        </div>
+      </div>
+      <h3 id="04D714D06415AC7F2CF3A47DD26E1D4110B072E4">CreateAndReduce</h3>
+      <p>public CallInst * CreateAndReduce(Value * Src)</p>
+      <div>
+        <div>
+          <p> Create a vector int AND reduction intrinsic of the source vector.</p>
+        </div>
+      </div>
+      <h3 id="ED57BDFF1BB3A36D558B6FA95F728D4FDA23FC3F">CreateOrReduce</h3>
+      <p>public CallInst * CreateOrReduce(Value * Src)</p>
+      <div>
+        <div>
+          <p> Create a vector int OR reduction intrinsic of the source vector.</p>
+        </div>
+      </div>
+      <h3 id="D75EAB020D47306A7ED2736C175ABAB2F9D6EB72">CreateXorReduce</h3>
+      <p>public CallInst * CreateXorReduce(Value * Src)</p>
+      <div>
+        <div>
+          <p> Create a vector int XOR reduction intrinsic of the source vector.</p>
+        </div>
+      </div>
+      <h3 id="A3684E13B0220E6D1F9776D3C77EF1B55C74219E">CreateIntMaxReduce</h3>
+      <p>public CallInst * CreateIntMaxReduce(Value * Src, _Bool IsSigned)</p>
+      <div>
+        <div>
+          <p> Create a vector integer max reduction intrinsic of the source vector.</p>
+        </div>
+      </div>
+      <h3 id="6E89EC3DAC67DC42381D82C9DE20F798079C7F77">CreateIntMinReduce</h3>
+      <p>public CallInst * CreateIntMinReduce(Value * Src, _Bool IsSigned)</p>
+      <div>
+        <div>
+          <p> Create a vector integer min reduction intrinsic of the source vector.</p>
+        </div>
+      </div>
+      <h3 id="5799A88A572A4B419BF93A15E3011C8F73AB7F4E">CreateFPMaxReduce</h3>
+      <p>public CallInst * CreateFPMaxReduce(Value * Src)</p>
+      <div>
+        <div>
+          <p> Create a vector float max reduction intrinsic of the source vector.</p>
+        </div>
+      </div>
+      <h3 id="DD5505255EE1A4D8E9EDD36B4DB4EB3974791BC5">CreateFPMinReduce</h3>
+      <p>public CallInst * CreateFPMinReduce(Value * Src)</p>
+      <div>
+        <div>
+          <p> Create a vector float min reduction intrinsic of the source vector.</p>
+        </div>
+      </div>
+      <h3 id="BBADF96958E6F8CFC0B88382A0E55DE7C21BE9FC">CreateFPMaximumReduce</h3>
+      <p>public CallInst * CreateFPMaximumReduce(Value * Src)</p>
+      <div>
+        <div>
+          <p> Create a vector float maximum reduction intrinsic of the 
+source vector. This variant follows the NaN and signed zero semantic of 
+llvm.maximum intrinsic.</p>
+        </div>
+      </div>
+      <h3 id="DFF572DA8187A71872C92CAD8F7502F0ED86D84B">CreateFPMinimumReduce</h3>
+      <p>public CallInst * CreateFPMinimumReduce(Value * Src)</p>
+      <div>
+        <div>
+          <p> Create a vector float minimum reduction intrinsic of the 
+source vector. This variant follows the NaN and signed zero semantic of 
+llvm.minimum intrinsic.</p>
+        </div>
+      </div>
+      <h3 id="BFE49638AA09FD8BA15469B827A38FF5BDA5A6F3">CreateLifetimeStart</h3>
+      <p>public CallInst * CreateLifetimeStart(Value * Ptr, ConstantInt * Size)</p>
+      <div>
+        <div>
+          <p> Create a lifetime.start intrinsic.</p>
+          <p> If the pointer isn't i8* it will be converted.</p>
+        </div>
+      </div>
+      <h3 id="8A0550069C6BB6BE28FCF2EF2D0563AC86B244B4">CreateLifetimeEnd</h3>
+      <p>public CallInst * CreateLifetimeEnd(Value * Ptr, ConstantInt * Size)</p>
+      <div>
+        <div>
+          <p> Create a lifetime.end intrinsic.</p>
+          <p> If the pointer isn't i8* it will be converted.</p>
+        </div>
+      </div>
+      <h3 id="1301575AFB8D98D8787ACD94C929FEC1BA53C56F">CreateInvariantStart</h3>
+      <p>public CallInst * CreateInvariantStart(Value * Ptr, ConstantInt * Size)</p>
+      <div>
+        <div>
+          <p> Create a call to invariant.start intrinsic.</p>
+          <p> If the pointer isn't i8* it will be converted.</p>
+        </div>
+      </div>
+      <h3 id="E55654DFB41EAE63600A9D1580A15CE436F8A831">CreateThreadLocalAddress</h3>
+      <p>public CallInst * CreateThreadLocalAddress(Value * Ptr)</p>
+      <div>
+        <div>
+          <p> Create a call to llvm.threadlocal.address intrinsic.</p>
+        </div>
+      </div>
+      <h3 id="B7644CA93CAB7C7C0DC7353D941E3E1F6DE59097">CreateMaskedLoad</h3>
+      <p>
+        public CallInst * CreateMaskedLoad(Type * Ty, Value * Ptr, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/Align.html">Align</a>
+         Alignment, Value * Mask, Value * PassThru, const Twine &amp; Name)
+      </p>
+      <div>
+        <div>
+          <p> Create a call to Masked Load intrinsic</p>
+        </div>
+      </div>
+      <h3 id="7D2C004CAB85B5E3E3EEE0DE67944A50DBF11CF4">CreateMaskedStore</h3>
+      <p>
+        public CallInst * CreateMaskedStore(Value * Val, Value * Ptr, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/Align.html">Align</a>
+         Alignment, Value * Mask)
+      </p>
+      <div>
+        <div>
+          <p> Create a call to Masked Store intrinsic</p>
+        </div>
+      </div>
+      <h3 id="59CD6AB4738A692EED6D8A3D652A6B32D5562BE4">CreateMaskedGather</h3>
+      <p>
+        public CallInst * CreateMaskedGather(Type * Ty, Value * Ptrs, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/Align.html">Align</a>
+         Alignment, Value * Mask, Value * PassThru, const Twine &amp; Name)
+      </p>
+      <div>
+        <div>
+          <p> Create a call to Masked Gather intrinsic</p>
+        </div>
+      </div>
+      <h3 id="D0E3D3293B15A53ADC007C30FF698CCD34ECF179">CreateMaskedScatter</h3>
+      <p>
+        public CallInst * CreateMaskedScatter(Value * Val, Value * Ptrs, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/Align.html">Align</a>
+         Alignment, Value * Mask)
+      </p>
+      <div>
+        <div>
+          <p> Create a call to Masked Scatter intrinsic</p>
+        </div>
+      </div>
+      <h3 id="9C22AE2D3E6951906C78A7608841D7BE208E1C5C">CreateMaskedExpandLoad</h3>
+      <p>public CallInst * CreateMaskedExpandLoad(Type * Ty, Value * Ptr, Value * Mask, Value * PassThru, const Twine &amp; Name)</p>
+      <div>
+        <div>
+          <p> Create a call to Masked Expand Load intrinsic</p>
+        </div>
+      </div>
+      <h3 id="8D28EE2AF52CC76249D1AADAE25D97869F42127D">CreateMaskedCompressStore</h3>
+      <p>public CallInst * CreateMaskedCompressStore(Value * Val, Value * Ptr, Value * Mask)</p>
+      <div>
+        <div>
+          <p> Create a call to Masked Compress Store intrinsic</p>
+        </div>
+      </div>
+      <h3 id="A1D7199C877139599946F3DB6AA56267ED476377">getAllOnesMask</h3>
+      <p>
+        public Value * getAllOnesMask(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ElementCount.html">ElementCount</a>
+         NumElts)
+      </p>
+      <p>Defined at line 842 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Return an all true boolean vector (mask) with  lanes.</p>
+        </div>
+      </div>
+      <h3 id="26DC22768618D46DBA66CF09B40F624E66ECF9C9">CreateAssumption</h3>
+      <p>
+        public CallInst * CreateAssumption(Value * Cond, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         OpBundles)
+      </p>
+      <div>
+        <div>
+          <p> Create an assume intrinsic call that allows the optimizer to assume that the provided condition will be true.</p>
+          <p> The optional argument  specifies operand bundles that are added to the call instruction.</p>
+        </div>
+      </div>
+      <h3 id="BFB5E762715C7DCEAD157D3C042C11928FBCF1CF">CreateNoAliasScopeDeclaration</h3>
+      <p>public Instruction * CreateNoAliasScopeDeclaration(Value * Scope)</p>
+      <div>
+        <div>
+          <p> Create a llvm.experimental.noalias.scope.decl intrinsic call.</p>
+        </div>
+      </div>
+      <h3 id="14313317C51952F8C2E4E621BE1F9468D43E51AE">CreateNoAliasScopeDeclaration</h3>
+      <p>public Instruction * CreateNoAliasScopeDeclaration(MDNode * ScopeTag)</p>
+      <p>Defined at line 858 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="5AD41425D629D23AB07B3B56F8D32955ED90F4D7">CreateGCStatepointCall</h3>
+      <p>
+        public CallInst * CreateGCStatepointCall(uint64_t ID, uint32_t NumPatchBytes, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/FunctionCallee.html">FunctionCallee</a>
+         ActualCallee, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         CallArgs, std::optional&lt;ArrayRef&lt;Value *&gt; &gt; DeoptArgs, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         GCArgs, const Twine &amp; Name)
+      </p>
+      <div>
+        <div>
+          <p> Create a call to the experimental.gc.statepoint intrinsic to start a new statepoint sequence.</p>
+        </div>
+      </div>
+      <h3 id="3B23AD6A7BA25B98F5AF284F83D03BC7D655B379">CreateGCStatepointCall</h3>
+      <p>
+        public CallInst * CreateGCStatepointCall(uint64_t ID, uint32_t NumPatchBytes, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/FunctionCallee.html">FunctionCallee</a>
+         ActualCallee, uint32_t Flags, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         CallArgs, std::optional&lt;ArrayRef&lt;Use&gt; &gt; 
+TransitionArgs, std::optional&lt;ArrayRef&lt;Use&gt; &gt; DeoptArgs, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         GCArgs, const Twine &amp; Name)
+      </p>
+      <div>
+        <div>
+          <p> Create a call to the experimental.gc.statepoint intrinsic to start a new statepoint sequence.</p>
+        </div>
+      </div>
+      <h3 id="1D0EEF96A2EE852985D3DE853FCB85EB7A593E8D">CreateGCStatepointCall</h3>
+      <p>
+        public CallInst * CreateGCStatepointCall(uint64_t ID, uint32_t NumPatchBytes, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/FunctionCallee.html">FunctionCallee</a>
+         ActualCallee, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         CallArgs, std::optional&lt;ArrayRef&lt;Value *&gt; &gt; DeoptArgs, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         GCArgs, const Twine &amp; Name)
+      </p>
+      <div>
+        <div>
+          <p> Conveninence function for the common case when CallArgs 
+are filled in using ArrayRef(CS.arg_begin(), CS.arg_end()); Use needs to
+ be .get()'ed to get the Value pointer.</p>
+        </div>
+      </div>
+      <h3 id="55DC2413C6BF5C2B632317E0799546695362D41E">CreateGCStatepointInvoke</h3>
+      <p>
+        public InvokeInst * CreateGCStatepointInvoke(uint64_t ID, uint32_t NumPatchBytes, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/FunctionCallee.html">FunctionCallee</a>
+         ActualInvokee, BasicBlock * NormalDest, BasicBlock * UnwindDest, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         InvokeArgs, std::optional&lt;ArrayRef&lt;Value *&gt; &gt; DeoptArgs, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         GCArgs, const Twine &amp; Name)
+      </p>
+      <div>
+        <div>
+          <p> Create an invoke to the experimental.gc.statepoint intrinsic to start a new statepoint sequence.</p>
+        </div>
+      </div>
+      <h3 id="85702559C4759C123C1581DF0593D6668548452F">CreateGCStatepointInvoke</h3>
+      <p>
+        public InvokeInst * CreateGCStatepointInvoke(uint64_t ID, uint32_t NumPatchBytes, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/FunctionCallee.html">FunctionCallee</a>
+         ActualInvokee, BasicBlock * NormalDest, BasicBlock * UnwindDest, uint32_t Flags, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         InvokeArgs, std::optional&lt;ArrayRef&lt;Use&gt; &gt; 
+TransitionArgs, std::optional&lt;ArrayRef&lt;Use&gt; &gt; DeoptArgs, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         GCArgs, const Twine &amp; Name)
+      </p>
+      <div>
+        <div>
+          <p> Create an invoke to the experimental.gc.statepoint intrinsic to start a new statepoint sequence.</p>
+        </div>
+      </div>
+      <h3 id="89931D7E1C1865D88966E98AEE9E6E9B4B863DE2">CreateGCStatepointInvoke</h3>
+      <p>
+        public InvokeInst * CreateGCStatepointInvoke(uint64_t ID, uint32_t NumPatchBytes, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/FunctionCallee.html">FunctionCallee</a>
+         ActualInvokee, BasicBlock * NormalDest, BasicBlock * UnwindDest, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         InvokeArgs, std::optional&lt;ArrayRef&lt;Value *&gt; &gt; DeoptArgs, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         GCArgs, const Twine &amp; Name)
+      </p>
+      <h3 id="9A64D27A930C3A2B4AA85C3357271E81D54AC0E3">CreateGCResult</h3>
+      <p>public CallInst * CreateGCResult(Instruction * Statepoint, Type * ResultType, const Twine &amp; Name)</p>
+      <div>
+        <div>
+          <p> Create a call to the experimental.gc.result intrinsic to extract the result from a call wrapped in a statepoint.</p>
+        </div>
+      </div>
+      <h3 id="7A320732B735E1B8E4DC1629C0AC183B7CF09F51">CreateGCRelocate</h3>
+      <p>public CallInst * CreateGCRelocate(Instruction * Statepoint, 
+int BaseOffset, int DerivedOffset, Type * ResultType, const Twine &amp; 
+Name)</p>
+      <div>
+        <div>
+          <p> Create a call to the experimental.gc.relocate intrinsics to project the relocated value of one pointer from the statepoint.</p>
+        </div>
+      </div>
+      <h3 id="5257B2C3F19716ACBB8BB7737D7A07A8436829D4">CreateGCGetPointerBase</h3>
+      <p>public CallInst * CreateGCGetPointerBase(Value * DerivedPtr, const Twine &amp; Name)</p>
+      <div>
+        <div>
+          <p> Create a call to the experimental.gc.pointer.base intrinsic to get the base pointer for the specified derived pointer.</p>
+        </div>
+      </div>
+      <h3 id="17DA1E8AEBE051604975415F31A5F13D5C2EA701">CreateGCGetPointerOffset</h3>
+      <p>public CallInst * CreateGCGetPointerOffset(Value * DerivedPtr, const Twine &amp; Name)</p>
+      <div>
+        <div>
+          <p> Create a call to the experimental.gc.get.pointer.offset 
+intrinsic to get the offset of the specified derived pointer from its 
+base.</p>
+        </div>
+      </div>
+      <h3 id="F46451D7FFC6D6BE17466CCCD0563336EB9B998A">CreateVScale</h3>
+      <p>public Value * CreateVScale(Constant * Scaling, const Twine &amp; Name)</p>
+      <div>
+        <div>
+          <p> Create a call to llvm.vscale, multiplied by  The type of VScale will be the same type as that of </p>
+        </div>
+      </div>
+      <h3 id="1BC357DD6EC80A36D1C58C11ABE73BE663D88A4E">CreateElementCount</h3>
+      <p>
+        public Value * CreateElementCount(Type * DstType, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ElementCount.html">ElementCount</a>
+         EC)
+      </p>
+      <div>
+        <div>
+          <p> Create an expression which evaluates to the number of elements in  at runtime.</p>
+        </div>
+      </div>
+      <h3 id="833D6F9B3604A7C07B841128DE437C9A8DCABCAF">CreateTypeSize</h3>
+      <p>
+        public Value * CreateTypeSize(Type * DstType, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/TypeSize.html">TypeSize</a>
+         Size)
+      </p>
+      <div>
+        <div>
+          <p> Create an expression which evaluates to the number of units in  at runtime.  This works for both units of bits and bytes.</p>
+        </div>
+      </div>
+      <h3 id="CCF2E0139648DF6C6C1FB0827EE24D07E0434142">CreateStepVector</h3>
+      <p>public Value * CreateStepVector(Type * DstType, const Twine &amp; Name)</p>
+      <div>
+        <div>
+          <p> Creates a vector of type  with the linear sequence &lt;0, 1, ...&gt;</p>
+        </div>
+      </div>
+      <h3 id="4AD34507FF2D7FFD89F45C271B37FF131560FA8C">CreateUnaryIntrinsic</h3>
+      <p>public CallInst * CreateUnaryIntrinsic(Intrinsic::ID ID, Value * V, Instruction * FMFSource, const Twine &amp; Name)</p>
+      <div>
+        <div>
+          <p> Create a call to intrinsic  with 1 operand which is mangled on its type.</p>
+        </div>
+      </div>
+      <h3 id="B45282B483B5DB51F21EEACA01D2602B9E94BF15">CreateBinaryIntrinsic</h3>
+      <p>public CallInst * CreateBinaryIntrinsic(Intrinsic::ID ID, Value
+ * LHS, Value * RHS, Instruction * FMFSource, const Twine &amp; Name)</p>
+      <div>
+        <div>
+          <p> Create a call to intrinsic  with 2 operands which is mangled on the first type.</p>
+        </div>
+      </div>
+      <h3 id="509CE6F614C5C39F234B84CE458593435A503F89">CreateIntrinsic</h3>
+      <p>
+        public CallInst * CreateIntrinsic(Intrinsic::ID ID, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         Types, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         Args, Instruction * FMFSource, const Twine &amp; Name)
+      </p>
+      <div>
+        <div>
+          <p> Create a call to intrinsic  with  mangled using  If is provided, copy fast-math-flags from that instruction to the intrinsic.</p>
+        </div>
+      </div>
+      <h3 id="89135DEB989B270B99C747139572002E36CC685D">CreateIntrinsic</h3>
+      <p>
+        public CallInst * CreateIntrinsic(Type * RetTy, Intrinsic::ID ID, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         Args, Instruction * FMFSource, const Twine &amp; Name)
+      </p>
+      <div>
+        <div>
+          <p> Create a call to intrinsic  with  and  If is provided, copy fast-math-flags from that instruction to the intrinsic.</p>
+        </div>
+      </div>
+      <h3 id="43C77A801709D1AB016E7E93A3B68C95006A670B">CreateMinNum</h3>
+      <p>public CallInst * CreateMinNum(Value * LHS, Value * RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 986 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Create call to the minnum intrinsic.</p>
+        </div>
+      </div>
+      <h3 id="01177C48F74462E90D480DD2AAB97FDEBF9180F2">CreateMaxNum</h3>
+      <p>public CallInst * CreateMaxNum(Value * LHS, Value * RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 996 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Create call to the maxnum intrinsic.</p>
+        </div>
+      </div>
+      <h3 id="6050237CF760FF0D95340C8C537D72263A8D0CDA">CreateMinimum</h3>
+      <p>public CallInst * CreateMinimum(Value * LHS, Value * RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 1006 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Create call to the minimum intrinsic.</p>
+        </div>
+      </div>
+      <h3 id="31C97DC07A949E675335A786451A829609A4D776">CreateMaximum</h3>
+      <p>public CallInst * CreateMaximum(Value * LHS, Value * RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 1011 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Create call to the maximum intrinsic.</p>
+        </div>
+      </div>
+      <h3 id="9B9CDBFB57F1A732311718EA74235BEDE6C3DCA6">CreateCopySign</h3>
+      <p>public CallInst * CreateCopySign(Value * LHS, Value * RHS, Instruction * FMFSource, const Twine &amp; Name)</p>
+      <p>Defined at line 1016 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Create call to the copysign intrinsic.</p>
+        </div>
+      </div>
+      <h3 id="831F87EC6A9F6089949560783AC92342A7F1B3EF">CreateArithmeticFence</h3>
+      <p>public CallInst * CreateArithmeticFence(Value * Val, Type * DstType, const Twine &amp; Name)</p>
+      <p>Defined at line 1024 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Create a call to the arithmetic_fence intrinsic.</p>
+        </div>
+      </div>
+      <h3 id="5EC309F95E11F8BE36F36D51E4354B10D9789D2E">CreateExtractVector</h3>
+      <p>public CallInst * CreateExtractVector(Type * DstType, Value * SrcVec, Value * Idx, const Twine &amp; Name)</p>
+      <p>Defined at line 1031 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Create a call to the vector.extract intrinsic.</p>
+        </div>
+      </div>
+      <h3 id="A91F843BEC87B3208E2C2D955423C113F630C147">CreateInsertVector</h3>
+      <p>public CallInst * CreateInsertVector(Type * DstType, Value * SrcVec, Value * SubVec, Value * Idx, const Twine &amp; Name)</p>
+      <p>Defined at line 1039 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Create a call to the vector.insert intrinsic.</p>
+        </div>
+      </div>
+      <h3 id="6C7FC3889103B67FC202A1CB1A0D2AF13B57A303">CreateStackSave</h3>
+      <p>public CallInst * CreateStackSave(const Twine &amp; Name)</p>
+      <p>Defined at line 1047 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Create a call to llvm.stacksave</p>
+        </div>
+      </div>
+      <h3 id="8C544703817796AFFC963309944018C9413FEFB8">CreateStackRestore</h3>
+      <p>public CallInst * CreateStackRestore(Value * Ptr, const Twine &amp; Name)</p>
+      <p>Defined at line 1054 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Create a call to llvm.stackrestore</p>
+        </div>
+      </div>
+      <h3 id="5CA05692072FB0651B3D3AE61C2ACE3C53DF2FF7">CreateMaskedIntrinsic</h3>
+      <p>
+        private CallInst * CreateMaskedIntrinsic(Intrinsic::ID Id, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         Ops, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         OverloadedTypes, const Twine &amp; Name)
+      </p>
+      <div>
+        <div>
+          <p> Create a call to a masked intrinsic with given Id.</p>
+        </div>
+      </div>
+      <h3 id="AC3AEDC305D12DF98F176F8222D485A7153585D2">addBranchMetadata</h3>
+      <p>private InstTy * addBranchMetadata(InstTy * I, MDNode * Weights, MDNode * Unpredictable)</p>
+      <p>Defined at line 1074 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Helper to add branch weight and unpredictable metadata onto an instruction.</p>
+        </div>
+      </div>
+      <h3 id="FCF5D962081BBD0CF5C2B06984DDEC203BF9DBCE">CreateRetVoid</h3>
+      <p>public ReturnInst * CreateRetVoid()</p>
+      <p>Defined at line 1084 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Create a 'ret void' instruction.</p>
+        </div>
+      </div>
+      <h3 id="926ADBB557B907B49DCFEAE377E99716D554ABB7">CreateRet</h3>
+      <p>public ReturnInst * CreateRet(Value * V)</p>
+      <p>Defined at line 1089 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Create a 'ret &lt;val&gt;' instruction.</p>
+        </div>
+      </div>
+      <h3 id="26252362143F69DF738FA51CDF85E58A6819FC00">CreateAggregateRet</h3>
+      <p>public ReturnInst * CreateAggregateRet(Value *const * retVals, unsigned int N)</p>
+      <p>Defined at line 1100 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Create a sequence of N insertvalue instructions, with one 
+Value from the retVals array each, that build a aggregate return value 
+one value at a time, and a ret instruction to return the resulting 
+aggregate value.</p>
+          <p> This is a convenience function for code that uses aggregate return values as a vehicle for having multiple return values.</p>
+        </div>
+      </div>
+      <h3 id="4B01D12E96DA96083105C2C1D7C1CDE2B6B49655">CreateBr</h3>
+      <p>public BranchInst * CreateBr(BasicBlock * Dest)</p>
+      <p>Defined at line 1108 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Create an unconditional 'br label X' instruction.</p>
+        </div>
+      </div>
+      <h3 id="98C5A2C153E3F27C6E2AA032D016881644481412">CreateCondBr</h3>
+      <p>public BranchInst * CreateCondBr(Value * Cond, BasicBlock * 
+True, BasicBlock * False, MDNode * BranchWeights, MDNode * 
+Unpredictable)</p>
+      <p>Defined at line 1114 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Create a conditional 'br Cond, TrueDest, FalseDest' instruction.</p>
+        </div>
+      </div>
+      <h3 id="F334046E5D322F48C1F255CF163AE45608FCD785">CreateCondBr</h3>
+      <p>public BranchInst * CreateCondBr(Value * Cond, BasicBlock * True, BasicBlock * False, Instruction * MDSrc)</p>
+      <p>Defined at line 1123 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Create a conditional 'br Cond, TrueDest, FalseDest' instruction. Copy branch meta data if available.</p>
+        </div>
+      </div>
+      <h3 id="F035014CE9C1E5C86936CF75C7BBF3CEFFD1A0F7">CreateSwitch</h3>
+      <p>public SwitchInst * CreateSwitch(Value * V, BasicBlock * Dest, 
+unsigned int NumCases, MDNode * BranchWeights, MDNode * Unpredictable)</p>
+      <p>Defined at line 1137 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Create a switch instruction with the specified value, 
+default dest, and with a hint for the number of cases that will be added
+ (for efficient allocation).</p>
+        </div>
+      </div>
+      <h3 id="BE421ECD74BD331AA8AE9CC15C44AC513792CA59">CreateIndirectBr</h3>
+      <p>public IndirectBrInst * CreateIndirectBr(Value * Addr, unsigned int NumDests)</p>
+      <p>Defined at line 1147 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Create an indirect branch instruction with the specified 
+address operand, with an optional hint for the number of destinations 
+that will be added (for efficient allocation).</p>
+        </div>
+      </div>
+      <h3 id="BEE81C1204AB3C990A74AC3EB059970272820FA7">CreateInvoke</h3>
+      <p>
+        public InvokeInst * CreateInvoke(FunctionType * Ty, Value * Callee, BasicBlock * NormalDest, BasicBlock * UnwindDest, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         Args, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         OpBundles, const Twine &amp; Name)
+      </p>
+      <p>Defined at line 1152 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Create an invoke instruction.</p>
+        </div>
+      </div>
+      <h3 id="5D6879DD4309D1A04EA37232D387939BD67BDDF3">CreateInvoke</h3>
+      <p>
+        public InvokeInst * CreateInvoke(FunctionType * Ty, Value * Callee, BasicBlock * NormalDest, BasicBlock * UnwindDest, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         Args, const Twine &amp; Name)
+      </p>
+      <p>Defined at line 1163 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="7E7346E7EC9CC6A3169EF9C55421927C79734248">CreateInvoke</h3>
+      <p>
+        public InvokeInst * CreateInvoke(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/FunctionCallee.html">FunctionCallee</a>
+         Callee, BasicBlock * NormalDest, BasicBlock * UnwindDest, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         Args, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         OpBundles, const Twine &amp; Name)
+      </p>
+      <p>Defined at line 1174 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="03076AAA45B2B1642CC56AE428DEE89014420574">CreateInvoke</h3>
+      <p>
+        public InvokeInst * CreateInvoke(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/FunctionCallee.html">FunctionCallee</a>
+         Callee, BasicBlock * NormalDest, BasicBlock * UnwindDest, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         Args, const Twine &amp; Name)
+      </p>
+      <p>Defined at line 1182 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="3CFE3E37F2469C93D7A4FB9091B3AF4188F2B51F">CreateCallBr</h3>
+      <p>
+        public CallBrInst * CreateCallBr(FunctionType * Ty, Value * Callee, BasicBlock * DefaultDest, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         IndirectDests, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         Args, const Twine &amp; Name)
+      </p>
+      <p>Defined at line 1191 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div></div>
+      </div>
+      <h3 id="7008DC3DE9329A224279C4933BA5788F2AA8DE7A">CreateCallBr</h3>
+      <p>
+        public CallBrInst * CreateCallBr(FunctionType * Ty, Value * Callee, BasicBlock * DefaultDest, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         IndirectDests, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         Args, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         OpBundles, const Twine &amp; Name)
+      </p>
+      <p>Defined at line 1199 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="32E7CA327A3208E90806A1241AED384245D36761">CreateCallBr</h3>
+      <p>
+        public CallBrInst * CreateCallBr(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/FunctionCallee.html">FunctionCallee</a>
+         Callee, BasicBlock * DefaultDest, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         IndirectDests, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         Args, const Twine &amp; Name)
+      </p>
+      <p>Defined at line 1210 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="A125335EAFDB7B909A9944C295E8459159940E97">CreateCallBr</h3>
+      <p>
+        public CallBrInst * CreateCallBr(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/FunctionCallee.html">FunctionCallee</a>
+         Callee, BasicBlock * DefaultDest, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         IndirectDests, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         Args, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         OpBundles, const Twine &amp; Name)
+      </p>
+      <p>Defined at line 1217 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="7F2B1BD45ED2D22397F0FD0E283C533C538FCF36">CreateResume</h3>
+      <p>public ResumeInst * CreateResume(Value * Exn)</p>
+      <p>Defined at line 1226 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="3D90B5AD0179385F3764F4D217CC9D3C24BCCAB4">CreateCleanupRet</h3>
+      <p>public CleanupReturnInst * CreateCleanupRet(CleanupPadInst * CleanupPad, BasicBlock * UnwindBB)</p>
+      <p>Defined at line 1230 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="B3812C13E15D10B69A158826AEB6B1A11C9DD2A5">CreateCatchSwitch</h3>
+      <p>public CatchSwitchInst * CreateCatchSwitch(Value * ParentPad, 
+BasicBlock * UnwindBB, unsigned int NumHandlers, const Twine &amp; Name)</p>
+      <p>Defined at line 1235 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="BF825B62DF6D41C840C31C866D21960652DF038F">CreateCatchPad</h3>
+      <p>
+        public CatchPadInst * CreateCatchPad(Value * ParentPad, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         Args, const Twine &amp; Name)
+      </p>
+      <p>Defined at line 1242 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="153FC94D4B6845DB87B4BE216263D38B0AB4D678">CreateCleanupPad</h3>
+      <p>
+        public CleanupPadInst * CreateCleanupPad(Value * ParentPad, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         Args, const Twine &amp; Name)
+      </p>
+      <p>Defined at line 1247 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="C140323A70D26CDA3D11E060BE511B14D386ABB6">CreateCatchRet</h3>
+      <p>public CatchReturnInst * CreateCatchRet(CatchPadInst * CatchPad, BasicBlock * BB)</p>
+      <p>Defined at line 1253 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="00CDF91FA60C7809906642E60BDF072126FB841D">CreateUnreachable</h3>
+      <p>public UnreachableInst * CreateUnreachable()</p>
+      <p>Defined at line 1257 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="EA65B601682A32BAC3D2D6CAEF4A76092E9F841C">CreateInsertNUWNSWBinOp</h3>
+      <p>
+        private BinaryOperator * CreateInsertNUWNSWBinOp(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/Instruction/BinaryOps.html">BinaryOps</a>
+         Opc, Value * LHS, Value * RHS, const Twine &amp; Name, _Bool HasNUW, _Bool HasNSW)
+      </p>
+      <p>Defined at line 1265 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="75A7D122B466C28C109C77C39A3FED983E8EE533">setFPAttrs</h3>
+      <p>
+        private Instruction * setFPAttrs(Instruction * I, MDNode * FPMD, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/FastMathFlags.html">FastMathFlags</a>
+         FMF)
+      </p>
+      <p>Defined at line 1275 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="CF7DA0B3AD4B9FD5AC47300CC1F4EE61F3A09A5A">getConstrainedFPRounding</h3>
+      <p>
+        private Value * getConstrainedFPRounding(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/std/optional.html">optional</a>
+         Rounding)
+      </p>
+      <p>Defined at line 1285 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="6CF2136B8439375287BE5E36357FC97B07B37130">getConstrainedFPExcept</h3>
+      <p>
+        private Value * getConstrainedFPExcept(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/std/optional.html">optional</a>
+         Except)
+      </p>
+      <p>Defined at line 1299 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="6F0347DB4E8E146967A175B02281F0D4485F5D0B">getConstrainedFPPredicate</h3>
+      <p>
+        private Value * getConstrainedFPPredicate(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/CmpInst/Predicate.html">Predicate</a>
+         Predicate)
+      </p>
+      <p>Defined at line 1308 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="5794DCC12834D6EE9BFCC2BE098C4AC32DEBD634">CreateAdd</h3>
+      <p>public Value * CreateAdd(Value * LHS, Value * RHS, const Twine &amp; Name, _Bool HasNUW, _Bool HasNSW)</p>
+      <p>Defined at line 1321 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="42249D1476752D3987EF9112B4D91246D7FCBC8F">CreateNSWAdd</h3>
+      <p>public Value * CreateNSWAdd(Value * LHS, Value * RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 1330 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="F0C94416E7908B591DB634DD41FC9D8001CF6A4B">CreateNUWAdd</h3>
+      <p>public Value * CreateNUWAdd(Value * LHS, Value * RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 1334 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="20306F7D6E90EA312CD3F6DC6CA3AFFC6FDEF087">CreateSub</h3>
+      <p>public Value * CreateSub(Value * LHS, Value * RHS, const Twine &amp; Name, _Bool HasNUW, _Bool HasNSW)</p>
+      <p>Defined at line 1338 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="4D91A593A7DFDF1A48DE47695B982355042CAFFE">CreateNSWSub</h3>
+      <p>public Value * CreateNSWSub(Value * LHS, Value * RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 1347 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="267811E71E81825DF123A0F692E7F80490B76364">CreateNUWSub</h3>
+      <p>public Value * CreateNUWSub(Value * LHS, Value * RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 1351 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="973A0EDAE21A10916FCD0F7D856C37B83DDF7815">CreateMul</h3>
+      <p>public Value * CreateMul(Value * LHS, Value * RHS, const Twine &amp; Name, _Bool HasNUW, _Bool HasNSW)</p>
+      <p>Defined at line 1355 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="0D84A219DC5F7E73BA1F9938AD78FB3B350677CC">CreateNSWMul</h3>
+      <p>public Value * CreateNSWMul(Value * LHS, Value * RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 1364 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="86E1254B67AAAEC5378D5B7C8DEC93592465CA72">CreateNUWMul</h3>
+      <p>public Value * CreateNUWMul(Value * LHS, Value * RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 1368 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="3F3ABEA89D9A9BE305B44834E7D385D98C079ACF">CreateUDiv</h3>
+      <p>public Value * CreateUDiv(Value * LHS, Value * RHS, const Twine &amp; Name, _Bool isExact)</p>
+      <p>Defined at line 1372 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="19DD19877C8C8DE8B14A4A84D845228EB4B42795">CreateExactUDiv</h3>
+      <p>public Value * CreateExactUDiv(Value * LHS, Value * RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 1381 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="5BD5C3A7662531157E72D51A75D04D7F9639917A">CreateSDiv</h3>
+      <p>public Value * CreateSDiv(Value * LHS, Value * RHS, const Twine &amp; Name, _Bool isExact)</p>
+      <p>Defined at line 1385 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="9F8B951AF0C2C2BE50AD524245B0390F34368D74">CreateExactSDiv</h3>
+      <p>public Value * CreateExactSDiv(Value * LHS, Value * RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 1394 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="24E04A3700F4056DA4BD97FE170A09F456000BD3">CreateURem</h3>
+      <p>public Value * CreateURem(Value * LHS, Value * RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 1398 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="2D6DD93A872F7460C989F54520073BC5EF7BED54">CreateSRem</h3>
+      <p>public Value * CreateSRem(Value * LHS, Value * RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 1404 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="4CC52FC2C03BD5811ED8DBD67705374F3A6071B4">CreateShl</h3>
+      <p>public Value * CreateShl(Value * LHS, Value * RHS, const Twine &amp; Name, _Bool HasNUW, _Bool HasNSW)</p>
+      <p>Defined at line 1410 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="5EEFFB2B6D961BB4984EFE9B5B82E2684E7ACADF">CreateShl</h3>
+      <p>public Value * CreateShl(Value * LHS, const APInt &amp; RHS, const Twine &amp; Name, _Bool HasNUW, _Bool HasNSW)</p>
+      <p>Defined at line 1419 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="AD5D918885895285B68DE29E4A8CDB190FB66F62">CreateShl</h3>
+      <p>public Value * CreateShl(Value * LHS, uint64_t RHS, const Twine &amp; Name, _Bool HasNUW, _Bool HasNSW)</p>
+      <p>Defined at line 1425 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="A73D211F670EE57A8186115D92ECDC4EC4379CD1">CreateLShr</h3>
+      <p>public Value * CreateLShr(Value * LHS, Value * RHS, const Twine &amp; Name, _Bool isExact)</p>
+      <p>Defined at line 1431 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="32E915DAA9E3C4D303A685E7DE95F07FB5FE1B57">CreateLShr</h3>
+      <p>public Value * CreateLShr(Value * LHS, const APInt &amp; RHS, const Twine &amp; Name, _Bool isExact)</p>
+      <p>Defined at line 1440 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="AE1319AA2C00235FCE74793B3629160685F52ADD">CreateLShr</h3>
+      <p>public Value * CreateLShr(Value * LHS, uint64_t RHS, const Twine &amp; Name, _Bool isExact)</p>
+      <p>Defined at line 1445 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="23C6A2471F9C47D0759F987D9AFDE29DA1531DDB">CreateAShr</h3>
+      <p>public Value * CreateAShr(Value * LHS, Value * RHS, const Twine &amp; Name, _Bool isExact)</p>
+      <p>Defined at line 1450 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="64110B82B0612464813690D2010967A273962C02">CreateAShr</h3>
+      <p>public Value * CreateAShr(Value * LHS, const APInt &amp; RHS, const Twine &amp; Name, _Bool isExact)</p>
+      <p>Defined at line 1459 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="10FEEDC3CCA238122F8CB1BBF8CF9CFCD5076A07">CreateAShr</h3>
+      <p>public Value * CreateAShr(Value * LHS, uint64_t RHS, const Twine &amp; Name, _Bool isExact)</p>
+      <p>Defined at line 1464 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="EA440AF5ACFBE183465213F47588E6ACCE3EA644">CreateAnd</h3>
+      <p>public Value * CreateAnd(Value * LHS, Value * RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 1469 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="8F7B06F3A7846424C7143AA26E785012054150DA">CreateAnd</h3>
+      <p>public Value * CreateAnd(Value * LHS, const APInt &amp; RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 1475 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="C948ACD21699F43ED4B98384F9CAB2985BD32476">CreateAnd</h3>
+      <p>public Value * CreateAnd(Value * LHS, uint64_t RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 1479 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="E8B637343C3B8B2157570CDAEE71D97C785C57D1">CreateAnd</h3>
+      <p>
+        public Value * CreateAnd(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         Ops)
+      </p>
+      <p>Defined at line 1483 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="462CE13BAE129DC738B0638D38306E753CB351D5">CreateOr</h3>
+      <p>public Value * CreateOr(Value * LHS, Value * RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 1491 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="D5DA2247FFB9C8A42995383587D7CD60C0B0DC9F">CreateOr</h3>
+      <p>public Value * CreateOr(Value * LHS, const APInt &amp; RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 1497 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="50912D30FFE8C34C655EED0638F8F93007F1B252">CreateOr</h3>
+      <p>public Value * CreateOr(Value * LHS, uint64_t RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 1501 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="08F86857A072EC02672749A8B2092BEC35C7330E">CreateOr</h3>
+      <p>
+        public Value * CreateOr(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         Ops)
+      </p>
+      <p>Defined at line 1505 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="0B7655902564EB95296001D682729BBE65D33D62">CreateXor</h3>
+      <p>public Value * CreateXor(Value * LHS, Value * RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 1513 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="B33F1BD91C6F0B202EA85EE3CA98707AFBA4D9B7">CreateXor</h3>
+      <p>public Value * CreateXor(Value * LHS, const APInt &amp; RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 1519 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="30AE2284246337869F72C60134F940C3DDE4F95A">CreateXor</h3>
+      <p>public Value * CreateXor(Value * LHS, uint64_t RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 1523 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="C31552839C8F36D7DF00E3385A0878881F60A9B2">CreateFAdd</h3>
+      <p>public Value * CreateFAdd(Value * L, Value * R, const Twine &amp; Name, MDNode * FPMD)</p>
+      <p>Defined at line 1527 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="4344C28B008B8A0F970F8F1195AAC109AC4961C5">CreateFAddFMF</h3>
+      <p>public Value * CreateFAddFMF(Value * L, Value * R, Instruction * FMFSource, const Twine &amp; Name)</p>
+      <p>Defined at line 1541 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Copy fast-math-flags from an instruction rather than using the builder's default FMF.</p>
+        </div>
+      </div>
+      <h3 id="2FC1730E384A7FE884D690E4900DD916EF51C192">CreateFSub</h3>
+      <p>public Value * CreateFSub(Value * L, Value * R, const Twine &amp; Name, MDNode * FPMD)</p>
+      <p>Defined at line 1554 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="83688C9995C858EEFD8EA1A5E082876B0B964C24">CreateFSubFMF</h3>
+      <p>public Value * CreateFSubFMF(Value * L, Value * R, Instruction * FMFSource, const Twine &amp; Name)</p>
+      <p>Defined at line 1568 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Copy fast-math-flags from an instruction rather than using the builder's default FMF.</p>
+        </div>
+      </div>
+      <h3 id="104D35B33B9077053A3624C8BEDE166216EED13E">CreateFMul</h3>
+      <p>public Value * CreateFMul(Value * L, Value * R, const Twine &amp; Name, MDNode * FPMD)</p>
+      <p>Defined at line 1581 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="B76C381EDD1D9E7DAD3BE068DD79C05CB889EEA4">CreateFMulFMF</h3>
+      <p>public Value * CreateFMulFMF(Value * L, Value * R, Instruction * FMFSource, const Twine &amp; Name)</p>
+      <p>Defined at line 1595 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Copy fast-math-flags from an instruction rather than using the builder's default FMF.</p>
+        </div>
+      </div>
+      <h3 id="1A7B4E74828DC329425BC239F44A0449F437B47B">CreateFDiv</h3>
+      <p>public Value * CreateFDiv(Value * L, Value * R, const Twine &amp; Name, MDNode * FPMD)</p>
+      <p>Defined at line 1608 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="034009111830BDDC758D7D42342558D9C69C0E49">CreateFDivFMF</h3>
+      <p>public Value * CreateFDivFMF(Value * L, Value * R, Instruction * FMFSource, const Twine &amp; Name)</p>
+      <p>Defined at line 1622 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Copy fast-math-flags from an instruction rather than using the builder's default FMF.</p>
+        </div>
+      </div>
+      <h3 id="0ED70C8AC26312F909FFF176D683FB8876624ED4">CreateFRem</h3>
+      <p>public Value * CreateFRem(Value * L, Value * R, const Twine &amp; Name, MDNode * FPMD)</p>
+      <p>Defined at line 1635 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="866BD1D284350091BCADF98FFAFE42DD95F29F37">CreateFRemFMF</h3>
+      <p>public Value * CreateFRemFMF(Value * L, Value * R, Instruction * FMFSource, const Twine &amp; Name)</p>
+      <p>Defined at line 1648 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Copy fast-math-flags from an instruction rather than using the builder's default FMF.</p>
+        </div>
+      </div>
+      <h3 id="A1DA3D9789C68C0159CD891F31521437E23DEE63">CreateBinOp</h3>
+      <p>
+        public Value * CreateBinOp(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/Instruction/BinaryOps.html">BinaryOps</a>
+         Opc, Value * LHS, Value * RHS, const Twine &amp; Name, MDNode * FPMathTag)
+      </p>
+      <p>Defined at line 1660 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="4D362D1760A651B5EE9D5E4F180E8719121B3083">CreateLogicalAnd</h3>
+      <p>public Value * CreateLogicalAnd(Value * Cond1, Value * Cond2, const Twine &amp; Name)</p>
+      <p>Defined at line 1670 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="7FDFDE311A3A83FDEF6CBC277A51B73C056D3789">CreateLogicalOr</h3>
+      <p>public Value * CreateLogicalOr(Value * Cond1, Value * Cond2, const Twine &amp; Name)</p>
+      <p>Defined at line 1676 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="49C0499ED98015237BCEDD0871B533B4524223C8">CreateLogicalOp</h3>
+      <p>
+        public Value * CreateLogicalOp(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/Instruction/BinaryOps.html">BinaryOps</a>
+         Opc, Value * Cond1, Value * Cond2, const Twine &amp; Name)
+      </p>
+      <p>Defined at line 1682 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="EC78B87D4113AF1BE87AFB90E15F22A3A806AFFA">CreateLogicalOr</h3>
+      <p>
+        public Value * CreateLogicalOr(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         Ops)
+      </p>
+      <p>Defined at line 1696 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="DD565D48937EB7062B6271CF8CED185061D788CB">CreateConstrainedFPBinOp</h3>
+      <p>
+        public CallInst * CreateConstrainedFPBinOp(Intrinsic::ID ID, 
+Value * L, Value * R, Instruction * FMFSource, const Twine &amp; Name, 
+MDNode * FPMathTag, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/std/optional.html">optional</a>
+         Rounding, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/std/optional.html">optional</a>
+         Except)
+      </p>
+      <h3 id="26C78B4C5180BD736836687A691B9C28F31C8056">CreateConstrainedFPUnroundedBinOp</h3>
+      <p>
+        public CallInst * 
+CreateConstrainedFPUnroundedBinOp(Intrinsic::ID ID, Value * L, Value * 
+R, Instruction * FMFSource, const Twine &amp; Name, MDNode * FPMathTag, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/std/optional.html">optional</a>
+         Except)
+      </p>
+      <h3 id="0F250127CD8AC6DA92CDFAF1BBE8E327C1C5486E">CreateNeg</h3>
+      <p>public Value * CreateNeg(Value * V, const Twine &amp; Name, _Bool HasNUW, _Bool HasNSW)</p>
+      <p>Defined at line 1715 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="AF49A9AE872A898845CED5275F856A026967F9E2">CreateNSWNeg</h3>
+      <p>public Value * CreateNSWNeg(Value * V, const Twine &amp; Name)</p>
+      <p>Defined at line 1721 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="1807A49C436A761FB6DB455CEABB47746DF5E9C2">CreateNUWNeg</h3>
+      <p>public Value * CreateNUWNeg(Value * V, const Twine &amp; Name)</p>
+      <p>Defined at line 1725 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="DE016ADC2E6718DCC611B3819F5A5A80146D459C">CreateFNeg</h3>
+      <p>public Value * CreateFNeg(Value * V, const Twine &amp; Name, MDNode * FPMathTag)</p>
+      <p>Defined at line 1729 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="2F2567CE9012B03220779DFF8B05A97C9C335A38">CreateFNegFMF</h3>
+      <p>public Value * CreateFNegFMF(Value * V, Instruction * FMFSource, const Twine &amp; Name)</p>
+      <p>Defined at line 1739 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Copy fast-math-flags from an instruction rather than using the builder's default FMF.</p>
+        </div>
+      </div>
+      <h3 id="9A02C31D85B26F12A8C63DD7D3D0D91BCC994DC2">CreateNot</h3>
+      <p>public Value * CreateNot(Value * V, const Twine &amp; Name)</p>
+      <p>Defined at line 1748 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="052CD5BA021170AA6FFC9848AE22B0F23CC52D04">CreateUnOp</h3>
+      <p>
+        public Value * CreateUnOp(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/Instruction/UnaryOps.html">UnaryOps</a>
+         Opc, Value * V, const Twine &amp; Name, MDNode * FPMathTag)
+      </p>
+      <p>Defined at line 1752 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="74845EAF2109699798F5BDFB0C3BC8799CA6748F">CreateNAryOp</h3>
+      <p>
+        public Value * CreateNAryOp(unsigned int Opc, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         Ops, const Twine &amp; Name, MDNode * FPMathTag)
+      </p>
+      <div>
+        <div>
+          <p> Create either a UnaryOperator or BinaryOperator depending on  Correct number of operands must be passed accordingly.</p>
+        </div>
+      </div>
+      <h3 id="4DB196DD2076A25972E6732264FF7BFBE228541A">CreateAlloca</h3>
+      <p>public AllocaInst * CreateAlloca(Type * Ty, unsigned int AddrSpace, Value * ArraySize, const Twine &amp; Name)</p>
+      <p>Defined at line 1772 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="E9F0129458B4570903C5F4B0CFE5493445EEB421">CreateAlloca</h3>
+      <p>public AllocaInst * CreateAlloca(Type * Ty, Value * ArraySize, const Twine &amp; Name)</p>
+      <p>Defined at line 1779 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="980ECE9A4C0D779E04982449E30D33520ADC905A">CreateLoad</h3>
+      <p>public LoadInst * CreateLoad(Type * Ty, Value * Ptr, const char * Name)</p>
+      <p>Defined at line 1789 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Provided to resolve 'CreateLoad(Ty, Ptr, "...")' 
+correctly, instead of converting the string to 'bool' for the isVolatile
+ parameter.</p>
+        </div>
+      </div>
+      <h3 id="3493287CE97DBBDCF353ED9354EB4BC8AB3F607D">CreateLoad</h3>
+      <p>public LoadInst * CreateLoad(Type * Ty, Value * Ptr, const Twine &amp; Name)</p>
+      <p>Defined at line 1793 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="95890BB3F7499B3E0452DEBCEAD891EFE396E798">CreateLoad</h3>
+      <p>public LoadInst * CreateLoad(Type * Ty, Value * Ptr, _Bool isVolatile, const Twine &amp; Name)</p>
+      <p>Defined at line 1797 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="82A7A41D237C3B5E4D0FB3557F110338BB8BD693">CreateStore</h3>
+      <p>public StoreInst * CreateStore(Value * Val, Value * Ptr, _Bool isVolatile)</p>
+      <p>Defined at line 1802 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="C374C2A3D851C599E1B34925D2E4DDB5CE785A11">CreateAlignedLoad</h3>
+      <p>
+        public LoadInst * CreateAlignedLoad(Type * Ty, Value * Ptr, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/MaybeAlign.html">MaybeAlign</a>
+         Align, const char * Name)
+      </p>
+      <p>Defined at line 1806 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="610AFF2D7F1DBACF6DBEEC8346B1BA7B94C46293">CreateAlignedLoad</h3>
+      <p>
+        public LoadInst * CreateAlignedLoad(Type * Ty, Value * Ptr, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/MaybeAlign.html">MaybeAlign</a>
+         Align, const Twine &amp; Name)
+      </p>
+      <p>Defined at line 1811 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="5A2B6A13102038ECF8D2C3C549E969F5068F2374">CreateAlignedLoad</h3>
+      <p>
+        public LoadInst * CreateAlignedLoad(Type * Ty, Value * Ptr, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/MaybeAlign.html">MaybeAlign</a>
+         Align, _Bool isVolatile, const Twine &amp; Name)
+      </p>
+      <p>Defined at line 1816 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="2A90ED73DAC8A71C6151F6E82456999B2B603B66">CreateAlignedStore</h3>
+      <p>
+        public StoreInst * CreateAlignedStore(Value * Val, Value * Ptr, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/MaybeAlign.html">MaybeAlign</a>
+         Align, _Bool isVolatile)
+      </p>
+      <p>Defined at line 1825 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="16EBF906E0A19D71F039219631F2BEF28C96EDC6">CreateFence</h3>
+      <p>
+        public FenceInst * CreateFence(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/AtomicOrdering.html">AtomicOrdering</a>
+         Ordering, SyncScope::ID SSID, const Twine &amp; Name)
+      </p>
+      <p>Defined at line 1833 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="AEDB082818F10CC11FB025F8D382D10CBD232FF6">CreateAtomicCmpXchg</h3>
+      <p>
+        public AtomicCmpXchgInst * CreateAtomicCmpXchg(Value * Ptr, Value * Cmp, Value * New, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/MaybeAlign.html">MaybeAlign</a>
+         Align, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/AtomicOrdering.html">AtomicOrdering</a>
+         SuccessOrdering, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/AtomicOrdering.html">AtomicOrdering</a>
+         FailureOrdering, SyncScope::ID SSID)
+      </p>
+      <p>Defined at line 1839 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="275A574BE6CDF8B53D168D64647DBFE14986F0C0">CreateAtomicRMW</h3>
+      <p>
+        public AtomicRMWInst * CreateAtomicRMW(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/AtomicRMWInst/BinOp.html">BinOp</a>
+         Op, Value * Ptr, Value * Val, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/MaybeAlign.html">MaybeAlign</a>
+         Align, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/AtomicOrdering.html">AtomicOrdering</a>
+         Ordering, SyncScope::ID SSID)
+      </p>
+      <p>Defined at line 1853 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="BFA8D09E3FB76DA12CB8812EA7386A74CD09D3D2">CreateGEP</h3>
+      <p>
+        public Value * CreateGEP(Type * Ty, Value * Ptr, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         IdxList, const Twine &amp; Name, _Bool IsInBounds)
+      </p>
+      <p>Defined at line 1865 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="3DD3D449AAC5202FD9F3A7ECFFAA373E8313104B">CreateInBoundsGEP</h3>
+      <p>
+        public Value * CreateInBoundsGEP(Type * Ty, Value * Ptr, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         IdxList, const Twine &amp; Name)
+      </p>
+      <p>Defined at line 1875 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="5C7713DC72F46DBA8BE95B41328F22B646F96CCC">CreateConstGEP1_32</h3>
+      <p>public Value * CreateConstGEP1_32(Type * Ty, Value * Ptr, unsigned int Idx0, const Twine &amp; Name)</p>
+      <p>Defined at line 1880 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="D71C7603625265AE05DB71B4883352F7DDDE987E">CreateConstInBoundsGEP1_32</h3>
+      <p>public Value * CreateConstInBoundsGEP1_32(Type * Ty, Value * Ptr, unsigned int Idx0, const Twine &amp; Name)</p>
+      <p>Defined at line 1890 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="D694178978CDFBDA1AD39F410889D130D7A9126F">CreateConstGEP2_32</h3>
+      <p>public Value * CreateConstGEP2_32(Type * Ty, Value * Ptr, unsigned int Idx0, unsigned int Idx1, const Twine &amp; Name)</p>
+      <p>Defined at line 1900 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="E88AAEB3837F174F167E259D11467A92FA9A40F2">CreateConstInBoundsGEP2_32</h3>
+      <p>public Value * CreateConstInBoundsGEP2_32(Type * Ty, Value * Ptr, unsigned int Idx0, unsigned int Idx1, const Twine &amp; Name)</p>
+      <p>Defined at line 1913 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="66A1DA29122AFCC1A508BA0AE686DB2505EEDFC6">CreateConstGEP1_64</h3>
+      <p>public Value * CreateConstGEP1_64(Type * Ty, Value * Ptr, uint64_t Idx0, const Twine &amp; Name)</p>
+      <p>Defined at line 1926 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="E5AF3EEB7F6F36F86D763C734F722DADD72E8422">CreateConstInBoundsGEP1_64</h3>
+      <p>public Value * CreateConstInBoundsGEP1_64(Type * Ty, Value * Ptr, uint64_t Idx0, const Twine &amp; Name)</p>
+      <p>Defined at line 1936 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="924BF82A150029C9A505DDA7A071915233C170EC">CreateConstGEP2_64</h3>
+      <p>public Value * CreateConstGEP2_64(Type * Ty, Value * Ptr, uint64_t Idx0, uint64_t Idx1, const Twine &amp; Name)</p>
+      <p>Defined at line 1946 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="22E9B2AE7FA5636F390116329380E094B4CF6097">CreateConstInBoundsGEP2_64</h3>
+      <p>public Value * CreateConstInBoundsGEP2_64(Type * Ty, Value * Ptr, uint64_t Idx0, uint64_t Idx1, const Twine &amp; Name)</p>
+      <p>Defined at line 1959 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="82F967A2A4B62548F3560653B08B0CF275C4DC4A">CreateStructGEP</h3>
+      <p>public Value * CreateStructGEP(Type * Ty, Value * Ptr, unsigned int Idx, const Twine &amp; Name)</p>
+      <p>Defined at line 1972 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="0A2DB2C14C3AB7EBC5FB6B2513C054CEFA6A2C67">CreatePtrAdd</h3>
+      <p>public Value * CreatePtrAdd(Value * Ptr, Value * Offset, const Twine &amp; Name, _Bool IsInBounds)</p>
+      <p>Defined at line 1977 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="7759DEB5A003832EBE2F07B7B535E58AD97B3278">CreateInBoundsPtrAdd</h3>
+      <p>public Value * CreateInBoundsPtrAdd(Value * Ptr, Value * Offset, const Twine &amp; Name)</p>
+      <p>Defined at line 1982 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="3295E0BD410846E948E93B8AAAE77CF7D8FE1BE8">CreateGlobalStringPtr</h3>
+      <p>
+        public Constant * CreateGlobalStringPtr(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/StringRef.html">StringRef</a>
+         Str, const Twine &amp; Name, unsigned int AddressSpace, Module * M)
+      </p>
+      <p>Defined at line 1992 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Same as CreateGlobalString, but return a pointer with "i8*" type instead of a pointer to array of i8.</p>
+          <p> If no module is given via  it is take from the insertion point basic block.</p>
+        </div>
+      </div>
+      <h3 id="2EAFA583E19E39935BEABCCC5162729D829DF117">CreateTrunc</h3>
+      <p>public Value * CreateTrunc(Value * V, Type * DestTy, const Twine &amp; Name)</p>
+      <p>Defined at line 2006 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="7539EA2EAA7734282568CB434CBEE8206CF6320A">CreateZExt</h3>
+      <p>public Value * CreateZExt(Value * V, Type * DestTy, const Twine &amp; Name, _Bool IsNonNeg)</p>
+      <p>Defined at line 2010 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="07F38AB7A724F65F7D1BA5CB8077C0B1D4DAF44C">CreateSExt</h3>
+      <p>public Value * CreateSExt(Value * V, Type * DestTy, const Twine &amp; Name)</p>
+      <p>Defined at line 2022 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="E0651DECEF48105ABF7620171712CC95EBB9EAB3">CreateZExtOrTrunc</h3>
+      <p>public Value * CreateZExtOrTrunc(Value * V, Type * DestTy, const Twine &amp; Name)</p>
+      <p>Defined at line 2028 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Create a ZExt or Trunc from the integer value V to DestTy. Return the value untouched if the type of V is already DestTy.</p>
+        </div>
+      </div>
+      <h3 id="414F839FCEF451568161C84DE8646D976671C0D4">CreateSExtOrTrunc</h3>
+      <p>public Value * CreateSExtOrTrunc(Value * V, Type * DestTy, const Twine &amp; Name)</p>
+      <p>Defined at line 2043 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Create a SExt or Trunc from the integer value V to DestTy. Return the value untouched if the type of V is already DestTy.</p>
+        </div>
+      </div>
+      <h3 id="AF8F5799B5AD5E21B592E0C42FB6D095FB9EA610">CreateFPToUI</h3>
+      <p>public Value * CreateFPToUI(Value * V, Type * DestTy, const Twine &amp; Name)</p>
+      <p>Defined at line 2056 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="8465063A16F3C775538000AE291C2DB102BA645A">CreateFPToSI</h3>
+      <p>public Value * CreateFPToSI(Value * V, Type * DestTy, const Twine &amp; Name)</p>
+      <p>Defined at line 2063 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="0B0A3545BBAB1BC1F2CAFEB2B7023EBC044E24E1">CreateUIToFP</h3>
+      <p>public Value * CreateUIToFP(Value * V, Type * DestTy, const Twine &amp; Name)</p>
+      <p>Defined at line 2070 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="5CABBDBD2180DC9E13B111B36D81F9FEA057A029">CreateSIToFP</h3>
+      <p>public Value * CreateSIToFP(Value * V, Type * DestTy, const Twine &amp; Name)</p>
+      <p>Defined at line 2077 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="57958F78F1399BE75B24CB53067B1C3BD5F59B76">CreateFPTrunc</h3>
+      <p>public Value * CreateFPTrunc(Value * V, Type * DestTy, const Twine &amp; Name)</p>
+      <p>Defined at line 2084 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="931EA78A0FBDD88508149C98543199660718B5D7">CreateFPExt</h3>
+      <p>public Value * CreateFPExt(Value * V, Type * DestTy, const Twine &amp; Name)</p>
+      <p>Defined at line 2093 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="D6D52DC1D9F5249D0C44ED076F58C370639770B8">CreatePtrToInt</h3>
+      <p>public Value * CreatePtrToInt(Value * V, Type * DestTy, const Twine &amp; Name)</p>
+      <p>Defined at line 2100 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="086FDB993DFE15DBFCD0FFA2C826A75AF1F7CBAE">CreateIntToPtr</h3>
+      <p>public Value * CreateIntToPtr(Value * V, Type * DestTy, const Twine &amp; Name)</p>
+      <p>Defined at line 2105 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="7B3916812EF69CF525A713724FE038CD0467D435">CreateBitCast</h3>
+      <p>public Value * CreateBitCast(Value * V, Type * DestTy, const Twine &amp; Name)</p>
+      <p>Defined at line 2110 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="336EE9CA19D6D306D5AA36EE855495937F84AE04">CreateAddrSpaceCast</h3>
+      <p>public Value * CreateAddrSpaceCast(Value * V, Type * DestTy, const Twine &amp; Name)</p>
+      <p>Defined at line 2115 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="D60B60A1C8126747834D70241939AC545B445F9F">CreateZExtOrBitCast</h3>
+      <p>public Value * CreateZExtOrBitCast(Value * V, Type * DestTy, const Twine &amp; Name)</p>
+      <p>Defined at line 2120 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="A9B3BCFD50B2E7E64538B9FFB2D17F3D8BF55A00">CreateSExtOrBitCast</h3>
+      <p>public Value * CreateSExtOrBitCast(Value * V, Type * DestTy, const Twine &amp; Name)</p>
+      <p>Defined at line 2128 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="E181454DE0EA71FDFF2E7FF7B3A69E1F0DDD2CA6">CreateTruncOrBitCast</h3>
+      <p>public Value * CreateTruncOrBitCast(Value * V, Type * DestTy, const Twine &amp; Name)</p>
+      <p>Defined at line 2136 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="3D62A0C9D718C8102A5CA5761BB10DDAD83EE02E">CreateCast</h3>
+      <p>
+        public Value * CreateCast(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/Instruction/CastOps.html">CastOps</a>
+         Op, Value * V, Type * DestTy, const Twine &amp; Name)
+      </p>
+      <p>Defined at line 2144 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="C84EF4C90567C6F965DB5874C67C166ECCDD3D6B">CreatePointerCast</h3>
+      <p>public Value * CreatePointerCast(Value * V, Type * DestTy, const Twine &amp; Name)</p>
+      <p>Defined at line 2153 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="D75866098E8F28D62B29B50D618A0A4A4BF0FE99">CreatePointerBitCastOrAddrSpaceCast</h3>
+      <p>public Value * CreatePointerBitCastOrAddrSpaceCast(Value * V, Type * DestTy, const Twine &amp; Name)</p>
+      <p>Defined at line 2165 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="D4341186D76745D3A5E99B591F1A23D5850CF816">CreateIntCast</h3>
+      <p>public Value * CreateIntCast(Value * V, Type * DestTy, _Bool isSigned, const Twine &amp; Name)</p>
+      <p>Defined at line 2179 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="D318413084BA977AD39BFC25BD31BEF1B7AEE70D">CreateBitOrPointerCast</h3>
+      <p>public Value * CreateBitOrPointerCast(Value * V, Type * DestTy, const Twine &amp; Name)</p>
+      <p>Defined at line 2188 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="89C02823BC3F7D5947A91A4A58931E36302A7D89">CreateFPCast</h3>
+      <p>public Value * CreateFPCast(Value * V, Type * DestTy, const Twine &amp; Name)</p>
+      <p>Defined at line 2200 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="CAC34A0415557C4CDAE87B608CDD1C8DA830DA60">CreateConstrainedFPCast</h3>
+      <p>
+        public CallInst * CreateConstrainedFPCast(Intrinsic::ID ID, 
+Value * V, Type * DestTy, Instruction * FMFSource, const Twine &amp; 
+Name, MDNode * FPMathTag, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/std/optional.html">optional</a>
+         Rounding, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/std/optional.html">optional</a>
+         Except)
+      </p>
+      <h3 id="6A483C4F4F7EE547691AC9F4E403A856B6CB4F4D">CreateIntCast</h3>
+      <p>public Value * CreateIntCast(Value * , Type * , const char * )</p>
+      <p>Defined at line 2218 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="8271A453CCC676ADD172F3938B72FED95E3DBA19">CreateICmpEQ</h3>
+      <p>public Value * CreateICmpEQ(Value * LHS, Value * RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 2224 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="3FF4EE15AC0D18C7D579400C9010E7C0E34C6714">CreateICmpNE</h3>
+      <p>public Value * CreateICmpNE(Value * LHS, Value * RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 2228 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="2B9B54DAC89F3D690E59C635374A61342B618A86">CreateICmpUGT</h3>
+      <p>public Value * CreateICmpUGT(Value * LHS, Value * RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 2232 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="9B3CD7820D819C6EB72A42ADE7B20A0FF1D5D4B4">CreateICmpUGE</h3>
+      <p>public Value * CreateICmpUGE(Value * LHS, Value * RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 2236 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="8E5EA35B96304FA347FD5B58F199D296C3466C0C">CreateICmpULT</h3>
+      <p>public Value * CreateICmpULT(Value * LHS, Value * RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 2240 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="5BA88F185C6731F75B4116912B710A27ECA95553">CreateICmpULE</h3>
+      <p>public Value * CreateICmpULE(Value * LHS, Value * RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 2244 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="D667E45FF586B1B545C5359710D25727E1F0CEB0">CreateICmpSGT</h3>
+      <p>public Value * CreateICmpSGT(Value * LHS, Value * RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 2248 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="10F8C88AC2C67FA3CD8D9DF3CF0A4F5B463FE7A2">CreateICmpSGE</h3>
+      <p>public Value * CreateICmpSGE(Value * LHS, Value * RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 2252 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="6E527737E7CBFA8EB2843063514F90049DBF4566">CreateICmpSLT</h3>
+      <p>public Value * CreateICmpSLT(Value * LHS, Value * RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 2256 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="C6FE59F10585CC6361A3C87A04A1CABC0B587D6D">CreateICmpSLE</h3>
+      <p>public Value * CreateICmpSLE(Value * LHS, Value * RHS, const Twine &amp; Name)</p>
+      <p>Defined at line 2260 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="8A1BF730533A5ED6FEF76B91F9FC96813F2250A2">CreateFCmpOEQ</h3>
+      <p>public Value * CreateFCmpOEQ(Value * LHS, Value * RHS, const Twine &amp; Name, MDNode * FPMathTag)</p>
+      <p>Defined at line 2264 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="4951FF4970BEB4023BFE8FB130C435D5880A8A21">CreateFCmpOGT</h3>
+      <p>public Value * CreateFCmpOGT(Value * LHS, Value * RHS, const Twine &amp; Name, MDNode * FPMathTag)</p>
+      <p>Defined at line 2269 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="543482D662A048E0676A0EE21337565CFA4E1E82">CreateFCmpOGE</h3>
+      <p>public Value * CreateFCmpOGE(Value * LHS, Value * RHS, const Twine &amp; Name, MDNode * FPMathTag)</p>
+      <p>Defined at line 2274 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="D3A2DD047A1C9B72E89C87C7B2F0CE4E57E7DBD1">CreateFCmpOLT</h3>
+      <p>public Value * CreateFCmpOLT(Value * LHS, Value * RHS, const Twine &amp; Name, MDNode * FPMathTag)</p>
+      <p>Defined at line 2279 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="BB8E6FDBF575AA4646B9697F36C3ACFDE55F0D4A">CreateFCmpOLE</h3>
+      <p>public Value * CreateFCmpOLE(Value * LHS, Value * RHS, const Twine &amp; Name, MDNode * FPMathTag)</p>
+      <p>Defined at line 2284 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="F47A0E3885343703D2C410C5CFBDAF5A56485D7B">CreateFCmpONE</h3>
+      <p>public Value * CreateFCmpONE(Value * LHS, Value * RHS, const Twine &amp; Name, MDNode * FPMathTag)</p>
+      <p>Defined at line 2289 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="99EFD849152C80552618205ED4BE302182BFFEDC">CreateFCmpORD</h3>
+      <p>public Value * CreateFCmpORD(Value * LHS, Value * RHS, const Twine &amp; Name, MDNode * FPMathTag)</p>
+      <p>Defined at line 2294 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="64E57EFE9216C93E00BDDCCF900CEF6DA3440030">CreateFCmpUNO</h3>
+      <p>public Value * CreateFCmpUNO(Value * LHS, Value * RHS, const Twine &amp; Name, MDNode * FPMathTag)</p>
+      <p>Defined at line 2299 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="AAAB16137C3A4728466DF6361A0D163001CF98BF">CreateFCmpUEQ</h3>
+      <p>public Value * CreateFCmpUEQ(Value * LHS, Value * RHS, const Twine &amp; Name, MDNode * FPMathTag)</p>
+      <p>Defined at line 2304 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="42A3478D3FCD79FEEBF5EC95FC48562C36DC3C7A">CreateFCmpUGT</h3>
+      <p>public Value * CreateFCmpUGT(Value * LHS, Value * RHS, const Twine &amp; Name, MDNode * FPMathTag)</p>
+      <p>Defined at line 2309 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="C1FA661F878460A8C8904541AAF645D194836F29">CreateFCmpUGE</h3>
+      <p>public Value * CreateFCmpUGE(Value * LHS, Value * RHS, const Twine &amp; Name, MDNode * FPMathTag)</p>
+      <p>Defined at line 2314 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="51663044C580774E7B6DB5853C5BDD0CC5D5F12F">CreateFCmpULT</h3>
+      <p>public Value * CreateFCmpULT(Value * LHS, Value * RHS, const Twine &amp; Name, MDNode * FPMathTag)</p>
+      <p>Defined at line 2319 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="75CF42CAABFF13EABDA55701E2AFB76BFFD5EDB4">CreateFCmpULE</h3>
+      <p>public Value * CreateFCmpULE(Value * LHS, Value * RHS, const Twine &amp; Name, MDNode * FPMathTag)</p>
+      <p>Defined at line 2324 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="CCF6BD679654FE719BDDD157F2E27371EFDB8ECE">CreateFCmpUNE</h3>
+      <p>public Value * CreateFCmpUNE(Value * LHS, Value * RHS, const Twine &amp; Name, MDNode * FPMathTag)</p>
+      <p>Defined at line 2329 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="FC916D85F96E8E885BE6BF20DCF082EB9545F935">CreateICmp</h3>
+      <p>
+        public Value * CreateICmp(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/CmpInst/Predicate.html">Predicate</a>
+         P, Value * LHS, Value * RHS, const Twine &amp; Name)
+      </p>
+      <p>Defined at line 2334 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="92373D427FF82971335DE3000E4D07270CADA1A0">CreateFCmp</h3>
+      <p>
+        public Value * CreateFCmp(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/CmpInst/Predicate.html">Predicate</a>
+         P, Value * LHS, Value * RHS, const Twine &amp; Name, MDNode * FPMathTag)
+      </p>
+      <p>Defined at line 2344 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="C87E27EC0D1A033CAF7D9C784AC787F2328FAF88">CreateCmp</h3>
+      <p>
+        public Value * CreateCmp(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/CmpInst/Predicate.html">Predicate</a>
+         Pred, Value * LHS, Value * RHS, const Twine &amp; Name, MDNode * FPMathTag)
+      </p>
+      <p>Defined at line 2349 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="8D76D9C28BB35529DD307CB5EA3787F8DC3B9516">CreateFCmpS</h3>
+      <p>
+        public Value * CreateFCmpS(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/CmpInst/Predicate.html">Predicate</a>
+         P, Value * LHS, Value * RHS, const Twine &amp; Name, MDNode * FPMathTag)
+      </p>
+      <p>Defined at line 2359 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="9A1F1F8A8CDFA43754C168768C69CFB6D11DC109">CreateFCmpHelper</h3>
+      <p>
+        private Value * CreateFCmpHelper(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/CmpInst/Predicate.html">Predicate</a>
+         P, Value * LHS, Value * RHS, const Twine &amp; Name, MDNode * FPMathTag, _Bool IsSignaling)
+      </p>
+      <h3 id="56EF506885D330ED1EAD6B4863BCE4C5491E03E9">CreateConstrainedFPCmp</h3>
+      <p>
+        public CallInst * CreateConstrainedFPCmp(Intrinsic::ID ID, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/CmpInst/Predicate.html">Predicate</a>
+         P, Value * L, Value * R, const Twine &amp; Name, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/std/optional.html">optional</a>
+         Except)
+      </p>
+      <h3 id="5C93EAE246E76072BA06A2CD2E89EDC4C99C3544">CreatePHI</h3>
+      <p>public PHINode * CreatePHI(Type * Ty, unsigned int NumReservedValues, const Twine &amp; Name)</p>
+      <p>Defined at line 2380 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="C305C69106D200099B8265F4280F1AF1FB615A28">createCallHelper</h3>
+      <p>
+        private CallInst * createCallHelper(Function * Callee, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         Ops, const Twine &amp; Name, Instruction * FMFSource, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         OpBundles)
+      </p>
+      <h3 id="7063D15FFABB3B8791148FD883046435B6C9050C">CreateCall</h3>
+      <p>
+        public CallInst * CreateCall(FunctionType * FTy, Value * Callee, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         Args, const Twine &amp; Name, MDNode * FPMathTag)
+      </p>
+      <p>Defined at line 2395 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="0284BCE83612FE633BDD205303E73EEEAF3FC390">CreateCall</h3>
+      <p>
+        public CallInst * CreateCall(FunctionType * FTy, Value * Callee, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         Args, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         OpBundles, const Twine &amp; Name, MDNode * FPMathTag)
+      </p>
+      <p>Defined at line 2406 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="4DDAF6B80A179C9CE293F80B58AC76319D0CED9D">CreateCall</h3>
+      <p>
+        public CallInst * CreateCall(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/FunctionCallee.html">FunctionCallee</a>
+         Callee, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         Args, const Twine &amp; Name, MDNode * FPMathTag)
+      </p>
+      <p>Defined at line 2417 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="1EE2C5CB14541F121DCB86A30860BC395F11038F">CreateCall</h3>
+      <p>
+        public CallInst * CreateCall(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/FunctionCallee.html">FunctionCallee</a>
+         Callee, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         Args, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         OpBundles, const Twine &amp; Name, MDNode * FPMathTag)
+      </p>
+      <p>Defined at line 2424 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="6D8A9D88437A861633818075A460A0EFA4E9B42F">CreateConstrainedFPCall</h3>
+      <p>
+        public CallInst * CreateConstrainedFPCall(Function * Callee, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         Args, const Twine &amp; Name, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/std/optional.html">optional</a>
+         Rounding, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/std/optional.html">optional</a>
+         Except)
+      </p>
+      <h3 id="92FB100E5F2843D6F7E91066A83B22AC3CB0ECBB">CreateSelect</h3>
+      <p>public Value * CreateSelect(Value * C, Value * True, Value * False, const Twine &amp; Name, Instruction * MDFrom)</p>
+      <h3 id="C3F0167A489C7AC19DD3C764720A7C51144A7C7D">CreateVAArg</h3>
+      <p>public VAArgInst * CreateVAArg(Value * List, Type * Ty, const Twine &amp; Name)</p>
+      <p>Defined at line 2439 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="06723D155903AC805AC07828B32E78BF37A3384F">CreateExtractElement</h3>
+      <p>public Value * CreateExtractElement(Value * Vec, Value * Idx, const Twine &amp; Name)</p>
+      <p>Defined at line 2443 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="C82B93EFFEFD7D7175A2B0042EE2740257A802DE">CreateExtractElement</h3>
+      <p>public Value * CreateExtractElement(Value * Vec, uint64_t Idx, const Twine &amp; Name)</p>
+      <p>Defined at line 2450 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="026579C6634D756DBEDD7208E3A12131C20938C9">CreateInsertElement</h3>
+      <p>public Value * CreateInsertElement(Type * VecTy, Value * NewElt, Value * Idx, const Twine &amp; Name)</p>
+      <p>Defined at line 2455 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="6A871734AD81B185772B8C4510AC77126331EFA2">CreateInsertElement</h3>
+      <p>public Value * CreateInsertElement(Type * VecTy, Value * NewElt, uint64_t Idx, const Twine &amp; Name)</p>
+      <p>Defined at line 2460 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="B78BBA5ADF71CD70A6AF6A920D15E3E047FBED4B">CreateInsertElement</h3>
+      <p>public Value * CreateInsertElement(Value * Vec, Value * NewElt, Value * Idx, const Twine &amp; Name)</p>
+      <p>Defined at line 2465 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="004D59C8B6353DE8586EA2B91615D068FC878064">CreateInsertElement</h3>
+      <p>public Value * CreateInsertElement(Value * Vec, Value * NewElt, uint64_t Idx, const Twine &amp; Name)</p>
+      <p>Defined at line 2472 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="004CD4D1719740C6C5E9B8B97D000E60634E09AC">CreateShuffleVector</h3>
+      <p>public Value * CreateShuffleVector(Value * V1, Value * V2, Value * Mask, const Twine &amp; Name)</p>
+      <p>Defined at line 2477 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="53CB18A1A672B1668DE85F36A3ADAED110F3BF28">CreateShuffleVector</h3>
+      <p>
+        public Value * CreateShuffleVector(Value * V1, Value * V2, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         Mask, const Twine &amp; Name)
+      </p>
+      <p>Defined at line 2485 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> See class ShuffleVectorInst for a description of the mask representation.</p>
+        </div>
+      </div>
+      <h3 id="E44BB67A81BBB0F603F0653EB606D61538C26421">CreateShuffleVector</h3>
+      <p>
+        public Value * CreateShuffleVector(Value * V, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         Mask, const Twine &amp; Name)
+      </p>
+      <p>Defined at line 2494 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Create a unary shuffle. The second vector operand of the IR instruction is poison.</p>
+        </div>
+      </div>
+      <h3 id="0CAA626D9C5055A8713D6BE77B01D0962BB4AC08">CreateExtractValue</h3>
+      <p>
+        public Value * CreateExtractValue(Value * Agg, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         Idxs, const Twine &amp; Name)
+      </p>
+      <p>Defined at line 2499 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="58F6731B40AEB30C2653ABF65F8D5C2E8FDEFC98">CreateInsertValue</h3>
+      <p>
+        public Value * CreateInsertValue(Value * Agg, Value * Val, 
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ArrayRef.html">ArrayRef</a>
+         Idxs, const Twine &amp; Name)
+      </p>
+      <p>Defined at line 2506 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="F0517B592D9F98EF252AFAA38CBAEB033AB26C01">CreateLandingPad</h3>
+      <p>public LandingPadInst * CreateLandingPad(Type * Ty, unsigned int NumClauses, const Twine &amp; Name)</p>
+      <p>Defined at line 2513 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="48D1B6342E6036C90D09D4DC00EDE6A5AF1D4FA2">CreateFreeze</h3>
+      <p>public Value * CreateFreeze(Value * V, const Twine &amp; Name)</p>
+      <p>Defined at line 2518 of file include\llvm/IR/IRBuilder.h</p>
+      <h3 id="4A0EBEB9114A1CC93BCB97047C905EFD18D45348">CreateIsNull</h3>
+      <p>public Value * CreateIsNull(Value * Arg, const Twine &amp; Name)</p>
+      <p>Defined at line 2527 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Return a boolean value testing if  == 0.</p>
+        </div>
+      </div>
+      <h3 id="8D75361800B066F30FB5D524C387781FDCCE54A1">CreateIsNotNull</h3>
+      <p>public Value * CreateIsNotNull(Value * Arg, const Twine &amp; Name)</p>
+      <p>Defined at line 2532 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Return a boolean value testing if  != 0.</p>
+        </div>
+      </div>
+      <h3 id="87A15419BD63E5E45692FF7507DD21FB877F9DE1">CreateIsNeg</h3>
+      <p>public Value * CreateIsNeg(Value * Arg, const Twine &amp; Name)</p>
+      <p>Defined at line 2537 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Return a boolean value testing if &lt; 0.</p>
+        </div>
+      </div>
+      <h3 id="BF72FFBDDD93029AEE567FA48D540AF8754B3DBC">CreateIsNotNeg</h3>
+      <p>public Value * CreateIsNotNeg(Value * Arg, const Twine &amp; Name)</p>
+      <p>Defined at line 2542 of file include\llvm/IR/IRBuilder.h</p>
+      <div>
+        <div>
+          <p> Return a boolean value testing if  &gt; -1.</p>
+        </div>
+      </div>
+      <h3 id="D840B592054D3CBBE4EC79F10F95AEFADDB1CAA8">CreatePtrDiff</h3>
+      <p>public Value * CreatePtrDiff(Type * ElemTy, Value * LHS, Value * RHS, const Twine &amp; Name)</p>
+      <div>
+        <div>
+          <p> Return the i64 difference between two pointer values, dividing out the size of the pointed-to objects.</p>
+          <p> This is intended to implement C-style pointer subtraction.
+ As such, the pointers must be appropriately aligned for their element 
+types and pointing into the same object.</p>
+        </div>
+      </div>
+      <h3 id="C0562CD0DFCA8413F6C43E5DBEC37549ED89DAFC">CreateLaunderInvariantGroup</h3>
+      <p>public Value * CreateLaunderInvariantGroup(Value * Ptr)</p>
+      <div>
+        <div>
+          <p> Create a launder.invariant.group intrinsic call. If Ptr 
+type is different from pointer to i8, it's casted to pointer to i8 in 
+the same address space before call and casted back to Ptr type after 
+call.</p>
+        </div>
+      </div>
+      <h3 id="3CA341300A4D283D56321E70C134179F89574AE9">CreateStripInvariantGroup</h3>
+      <p>public Value * CreateStripInvariantGroup(Value * Ptr)</p>
+      <div>
+        <div></div>
+      </div>
+      <h3 id="030C365DDA94710547FA54111FA9B8BA774409D2">CreateVectorReverse</h3>
+      <p>public Value * CreateVectorReverse(Value * V, const Twine &amp; Name)</p>
+      <div>
+        <div>
+          <p> Return a vector value that contains the vector V reversed</p>
+        </div>
+      </div>
+      <h3 id="9296F82F13AA263A3F8783FD95985472963B5999">CreateVectorSplice</h3>
+      <p>public Value * CreateVectorSplice(Value * V1, Value * V2, int64_t Imm, const Twine &amp; Name)</p>
+      <div>
+        <div>
+          <p> Return a vector splice intrinsic if using scalable 
+vectors, otherwise return a shufflevector. If the immediate is positive,
+ a vector is extracted from concat(V1, V2), starting at Imm. If the 
+immediate is negative, we extract -Imm elements from V1 and the 
+remaining elements from V2. Imm is a signed integer in the range -VL 
+&lt;= Imm &lt; VL (where VL is the runtime vector length of the 
+source/result vector)</p>
+        </div>
+      </div>
+      <h3 id="1504CCFC0CD896D88265E5B80A14C78898CFAF20">CreateVectorSplat</h3>
+      <p>public Value * CreateVectorSplat(unsigned int NumElts, Value * V, const Twine &amp; Name)</p>
+      <div>
+        <div>
+          <p> Return a vector value that contains </p>
+        </div>
+      </div>
+      <h3 id="24EF65D20A997020E60C77671731E3EC78EC359D">CreateVectorSplat</h3>
+      <p>
+        public Value * CreateVectorSplat(
+        <a href="file:///D:/Compilers/Ninja-llvm/llvm-project/llvm/doc/llvm/ElementCount.html">ElementCount</a>
+         EC, Value * V, const Twine &amp; Name)
+      </p>
+      <div>
+        <div>
+          <p> Return a vector value that contains </p>
+        </div>
+      </div>
+      <h3 id="A7811AAD742AD4BB06407C4887142CAD2E301F88">CreatePreserveArrayAccessIndex</h3>
+      <p>public Value * CreatePreserveArrayAccessIndex(Type * ElTy, 
+Value * Base, unsigned int Dimension, unsigned int LastIndex, MDNode * 
+DbgInfo)</p>
+      <h3 id="93C69A846AA178ECA9E8DEC336F6DB70F94ED9DD">CreatePreserveUnionAccessIndex</h3>
+      <p>public Value * CreatePreserveUnionAccessIndex(Value * Base, unsigned int FieldIndex, MDNode * DbgInfo)</p>
+      <h3 id="23642E9B3A114B545C8523EBC77B4D012DEEEDBC">CreatePreserveStructAccessIndex</h3>
+      <p>public Value * CreatePreserveStructAccessIndex(Type * ElTy, 
+Value * Base, unsigned int Index, unsigned int FieldIndex, MDNode * 
+DbgInfo)</p>
+      <h3 id="107C8C54A0D9B8DCEFA199AD52D9FE17AB30C148">createIsFPClass</h3>
+      <p>public Value * createIsFPClass(Value * FPNum, unsigned int Test)</p>
+      <h3 id="90FD5B5D22D2F1DA70C10C8FA8A18C30E92FC0AD">CreateAlignmentAssumptionHelper</h3>
+      <p>private CallInst * CreateAlignmentAssumptionHelper(const 
+DataLayout &amp; DL, Value * PtrValue, Value * AlignValue, Value * 
+OffsetValue)</p>
+      <div>
+        <div>
+          <p> Helper function that creates an assume intrinsic call that
+ represents an alignment assumption on the provided pointer  with offset
+  and alignment value </p>
+        </div>
+      </div>
+      <h3 id="34095886E08C4471A3AA704F4A06B35DDE0AC373">CreateAlignmentAssumption</h3>
+      <p>public CallInst * CreateAlignmentAssumption(const DataLayout 
+&amp; DL, Value * PtrValue, unsigned int Alignment, Value * OffsetValue)</p>
+      <div>
+        <div>
+          <p> Create an assume intrinsic call that represents an alignment assumption on the provided pointer.</p>
+          <p> An optional offset can be provided, and if it is provided,
+ the offset must be subtracted from the provided pointer to get the 
+pointer with the specified alignment.</p>
+        </div>
+      </div>
+      <h3 id="19AAA5F8AADBD6A74CBDD71E7C35CC1DEEAC0D11">CreateAlignmentAssumption</h3>
+      <p>public CallInst * CreateAlignmentAssumption(const DataLayout &amp; DL, Value * PtrValue, Value * Alignment, Value * OffsetValue)</p>
+      <div>
+        <div>
+          <p> Create an assume intrinsic call that represents an alignment assumption on the provided pointer.</p>
+          <p> An optional offset can be provided, and if it is provided,
+ the offset must be subtracted from the provided pointer to get the 
+pointer with the specified alignment.</p>
+          <p> This overload handles the condition where the Alignment is dependent on an existing value rather than a static value.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="sidebar-right" class="col-xs-6 col-sm-6 col-md-2 sidebar sidebar-offcanvas-right">
+    <ol>
+      <li>
+        <span>
+          <a href="#Members">Members</a>
+        </span>
+      </li>
+      <li>
+        <span>
+          <a href="#Records">Records</a>
+        </span>
+      </li>
+      <li>
+        <span>
+          <a href="#Functions">Functions</a>
+        </span>
+        <ul>
+          <li>
+            <span>
+              <a href="#158A690CE92B3AF4B2C1F525A3FCA35D8E008C8F">AddOrRemoveMetadataToCopy</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#E39514368069D39D484AC04F602C8E5BB6254D32">IRBuilderBase</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#7B1288A37BBE5C3713FD4B648686A729CC6D474F">Insert</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#C2A36C19D1CF4598AB717E3EEB138553FC688C18">Insert</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#04A916F2D17F47D7875F7730A2CD89241AD28AA0">Insert</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#CFE512771B15ACDF6A8BEF2278BE3A3F3855EFDB">ClearInsertionPoint</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#725D1346BA95E1E57FE390BD35B935DB3AA55CB8">GetInsertBlock</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#6DF0E7408D0441A8E98C6A1E83620E2FDDBB8F67">GetInsertPoint</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#B9F1EEBA7E4DCA869D3C9C62D095D81ECC480E80">getContext</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#AA68C3B2DDCE58568C746365A359343EA725C063">SetInsertPoint</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#A45576B4E7904AC5C679544EFAC22182A4D984D3">SetInsertPoint</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#451B88757A5D0CD1FE6ABF2D2BBA32A7850A2AE0">SetInsertPoint</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#4531581AD6614C5D749FE191E6106328464970C8">SetInsertPoint</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#6FD927D35A01719EBAF8ACE2B37BFAB35EED9D7C">SetInsertPointPastAllocas</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#720FFE6561B1C4645FBA7ED00F4347696AC3F80A">SetCurrentDebugLocation</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#6E71CCBFA1869E1D6513DF790C5BED0864FF03BA">CollectMetadataToCopy</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#DDF9C8FEC459C527D86631B01ACB6BEF2A5EABB8">getCurrentDebugLocation</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#5F11F760F906E2C611A2B34265BF79109DA90E7C">SetInstDebugLocation</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#2ACAC97BE22809074B26D951901F9AA1AF0584A5">AddMetadataToInst</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#55A2246E8788497C0199787CC5D584152594FBFD">getCurrentFunctionReturnType</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#3776D8928B9677DCBB6C9BD6241658A5856E9086">saveIP</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#2DE4EBCBD94FF0A43CBB8492B52C8BBFEBCCD930">saveAndClearIP</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#60262D04DB15E3711DD2B45023AE2A9A234B3576">restoreIP</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#39F7E1688E9E34C3ACB083D2ADF318EC54455433">getDefaultFPMathTag</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#A2FC54ECD9964FAFE05AD310B10390C25173A950">getFastMathFlags</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#B02A838C5DDA77148C5403C8D8A743409BBA16E0">getFastMathFlags</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#6CE0DAE2765C811E508BBE8D2B83907FC6DA0654">clearFastMathFlags</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#A18ED64562EA7FAEB00D42AEBBCDE5BDA0262288">setDefaultFPMathTag</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#E6DC1AE90593488A55CA54C0A048718EAA070F9C">setFastMathFlags</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#50B233455E3633A81DDB2DE255BD7C1715852CBE">setIsFPConstrained</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#D2D3AFE63CBB4DACFD1814392AEC5546322D01EE">getIsFPConstrained</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#F8EE48031647AA44E0E95731E56AB72A6D77AF71">setDefaultConstrainedExcept</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#5D251745C6977F9CB757DD93EACD3AD7659002C5">setDefaultConstrainedRounding</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#78352E0155705AB6AAD6EE59BFE1C8A48E5F9F4B">getDefaultConstrainedExcept</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#476D6B2C70BA25FC2F34EA9DABA19C1A97A97CDD">getDefaultConstrainedRounding</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#97BAC13ABE4CD2CFF464CD0B7E9A85EFDD3BB7C9">setConstrainedFPFunctionAttr</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#B75619C832CBC58B9D0DB306B4F2F3C1218834B4">setConstrainedFPCallAttr</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#B7ECE5B3C5923BF159128A8F09B5C85898C27D50">setDefaultOperandBundles</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#D9389D831CE65E5DDD76B044DB386DF6B4BC72E9">CreateGlobalString</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#135D7220988EB8F51E527D34D7412B2F4EFB568A">getInt1</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#94FADB0E0716D3E79A6875E016B02229D4584DA3">getTrue</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#07198F0AB3182EED9506019EC9064F8511D8778E">getFalse</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#583D9DE28AE276A01A3402873F9625BFCDC7B122">getInt8</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#6641607721E77EEAA17AAA34642F6AF1E2D4570D">getInt16</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#D582B3E55E7047B86343F9F99D5B0968CDC37AF4">getInt32</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#BD98D8FC19DB6C662CE6DDFB18F0D2F0F03730DF">getInt64</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#09E3953C68039222A7ECB41BD642D261A76F51F8">getIntN</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#2251C613AA60C1CD8A033B8866F1960E262845A9">getInt</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#86D8E17649F97C7F00C064B81634E69E911485FF">getInt1Ty</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#2A09D177CA5DDF0F60F23EFE604940591CCE2FAD">getInt8Ty</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#35F3F728306627321F2F5A5972E76C7A413FEB39">getInt16Ty</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#C87E329FDCAE685295600AF5E920FE813C42C9BE">getInt32Ty</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#2DA6321FA0B2635A365B1A0A1ABE4374720092C3">getInt64Ty</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#5009163770E8FCFD7E869604FF4E90D995E9A29B">getInt128Ty</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#B86F54D6FC72B0F16DAAE61A4FBA227DC32E0B8C">getIntNTy</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#121886A0ED92742EFFEB69E4E75B8C188090EAD6">getHalfTy</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#03963CDCC3ACE02934FE49C308079808DDDEC694">getBFloatTy</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#02AAE5DB1BE86E9D7053885E0FBAEE04D37232C6">getFloatTy</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#D1FCBDA248FCA572D2B1D0B5E68B0FD25773C37A">getDoubleTy</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#1780C73999E3E892A0B4E01160D6600E16E14419">getVoidTy</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#7B49E43B690E4F8CAFF94D136062EA172D9C0A47">getPtrTy</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#243F26EF39926559F7EADEBE82626231C7D18B5D">getIntPtrTy</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#68323C41A2DBD3B44DB6DBD32AB61D992F40B3B2">getIndexTy</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#A71A4180E4A1CBB713D52BD852794E1EB1DBCED4">CreateMemSet</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#B50FF94C7A78983744B56F1A06F860A9B0C37F40">CreateMemSet</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#17247D1FA879A83A4CDB6F1853AB45E8332EDF35">CreateMemSetInline</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#DDAB876A6EFA561203C8286BAB2DC7A1DF47F320">CreateElementUnorderedAtomicMemSet</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#573CD75DFE238342FFDD56D511E0AE642F5C669F">CreateMalloc</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#ECD1978CEAFBFAFE106E5A070347618080EE7A65">CreateMalloc</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#D23AF284A559490D7A7E7C3F8D1DD2A267E7D2A3">CreateFree</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#363152B2CD628AF3A1A6559D8D283107BA7B5989">CreateElementUnorderedAtomicMemSet</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#FAB37C2FBAFA32545EE7A8FBA5E3E63EEE7D0D7E">CreateMemCpy</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#F1D3FA5EE142A52F819020EDD76E6A9470766935">CreateMemTransferInst</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#7EE5B24A37DD3C7BC5B9BAAA64BCE5340E2F7AB9">CreateMemCpy</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#1E4D4C7D6DA5646F6ED64D9A8BF0EBA35529FAC6">CreateMemCpyInline</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#3753DCC5572C8DEC792F631E22A8C2D4BAB20D13">CreateElementUnorderedAtomicMemCpy</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#39D30366F0ECF0E31C9C0C3AD58E395EAE8BC88A">CreateMemMove</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#8B1FFF9B8A44749AF8DBF8FEAC50767B7F8E3EB0">CreateMemMove</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#D31FDB537BFFEC170BBB610EF27ADC3D95B31438">CreateElementUnorderedAtomicMemMove</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#24F10BF667B148A3C3EC1D613BC656331D081525">getReductionIntrinsic</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#431BC1091D90F3DC8F522C4423AB5715F334D76A">CreateFAddReduce</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#F8CC0220701E32D0073F621F99EE7141E1B21BC7">CreateFMulReduce</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#0AE15FDBFEDB70AAEE2775BA08D56F8F7AE522F4">CreateAddReduce</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#D6D92985FEBDDDC1095C1813FEB75906EF4559D6">CreateMulReduce</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#04D714D06415AC7F2CF3A47DD26E1D4110B072E4">CreateAndReduce</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#ED57BDFF1BB3A36D558B6FA95F728D4FDA23FC3F">CreateOrReduce</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#D75EAB020D47306A7ED2736C175ABAB2F9D6EB72">CreateXorReduce</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#A3684E13B0220E6D1F9776D3C77EF1B55C74219E">CreateIntMaxReduce</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#6E89EC3DAC67DC42381D82C9DE20F798079C7F77">CreateIntMinReduce</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#5799A88A572A4B419BF93A15E3011C8F73AB7F4E">CreateFPMaxReduce</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#DD5505255EE1A4D8E9EDD36B4DB4EB3974791BC5">CreateFPMinReduce</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#BBADF96958E6F8CFC0B88382A0E55DE7C21BE9FC">CreateFPMaximumReduce</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#DFF572DA8187A71872C92CAD8F7502F0ED86D84B">CreateFPMinimumReduce</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#BFE49638AA09FD8BA15469B827A38FF5BDA5A6F3">CreateLifetimeStart</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#8A0550069C6BB6BE28FCF2EF2D0563AC86B244B4">CreateLifetimeEnd</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#1301575AFB8D98D8787ACD94C929FEC1BA53C56F">CreateInvariantStart</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#E55654DFB41EAE63600A9D1580A15CE436F8A831">CreateThreadLocalAddress</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#B7644CA93CAB7C7C0DC7353D941E3E1F6DE59097">CreateMaskedLoad</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#7D2C004CAB85B5E3E3EEE0DE67944A50DBF11CF4">CreateMaskedStore</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#59CD6AB4738A692EED6D8A3D652A6B32D5562BE4">CreateMaskedGather</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#D0E3D3293B15A53ADC007C30FF698CCD34ECF179">CreateMaskedScatter</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#9C22AE2D3E6951906C78A7608841D7BE208E1C5C">CreateMaskedExpandLoad</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#8D28EE2AF52CC76249D1AADAE25D97869F42127D">CreateMaskedCompressStore</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#A1D7199C877139599946F3DB6AA56267ED476377">getAllOnesMask</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#26DC22768618D46DBA66CF09B40F624E66ECF9C9">CreateAssumption</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#BFB5E762715C7DCEAD157D3C042C11928FBCF1CF">CreateNoAliasScopeDeclaration</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#14313317C51952F8C2E4E621BE1F9468D43E51AE">CreateNoAliasScopeDeclaration</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#5AD41425D629D23AB07B3B56F8D32955ED90F4D7">CreateGCStatepointCall</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#3B23AD6A7BA25B98F5AF284F83D03BC7D655B379">CreateGCStatepointCall</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#1D0EEF96A2EE852985D3DE853FCB85EB7A593E8D">CreateGCStatepointCall</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#55DC2413C6BF5C2B632317E0799546695362D41E">CreateGCStatepointInvoke</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#85702559C4759C123C1581DF0593D6668548452F">CreateGCStatepointInvoke</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#89931D7E1C1865D88966E98AEE9E6E9B4B863DE2">CreateGCStatepointInvoke</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#9A64D27A930C3A2B4AA85C3357271E81D54AC0E3">CreateGCResult</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#7A320732B735E1B8E4DC1629C0AC183B7CF09F51">CreateGCRelocate</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#5257B2C3F19716ACBB8BB7737D7A07A8436829D4">CreateGCGetPointerBase</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#17DA1E8AEBE051604975415F31A5F13D5C2EA701">CreateGCGetPointerOffset</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#F46451D7FFC6D6BE17466CCCD0563336EB9B998A">CreateVScale</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#1BC357DD6EC80A36D1C58C11ABE73BE663D88A4E">CreateElementCount</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#833D6F9B3604A7C07B841128DE437C9A8DCABCAF">CreateTypeSize</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#CCF2E0139648DF6C6C1FB0827EE24D07E0434142">CreateStepVector</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#4AD34507FF2D7FFD89F45C271B37FF131560FA8C">CreateUnaryIntrinsic</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#B45282B483B5DB51F21EEACA01D2602B9E94BF15">CreateBinaryIntrinsic</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#509CE6F614C5C39F234B84CE458593435A503F89">CreateIntrinsic</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#89135DEB989B270B99C747139572002E36CC685D">CreateIntrinsic</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#43C77A801709D1AB016E7E93A3B68C95006A670B">CreateMinNum</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#01177C48F74462E90D480DD2AAB97FDEBF9180F2">CreateMaxNum</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#6050237CF760FF0D95340C8C537D72263A8D0CDA">CreateMinimum</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#31C97DC07A949E675335A786451A829609A4D776">CreateMaximum</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#9B9CDBFB57F1A732311718EA74235BEDE6C3DCA6">CreateCopySign</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#831F87EC6A9F6089949560783AC92342A7F1B3EF">CreateArithmeticFence</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#5EC309F95E11F8BE36F36D51E4354B10D9789D2E">CreateExtractVector</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#A91F843BEC87B3208E2C2D955423C113F630C147">CreateInsertVector</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#6C7FC3889103B67FC202A1CB1A0D2AF13B57A303">CreateStackSave</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#8C544703817796AFFC963309944018C9413FEFB8">CreateStackRestore</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#5CA05692072FB0651B3D3AE61C2ACE3C53DF2FF7">CreateMaskedIntrinsic</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#AC3AEDC305D12DF98F176F8222D485A7153585D2">addBranchMetadata</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#FCF5D962081BBD0CF5C2B06984DDEC203BF9DBCE">CreateRetVoid</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#926ADBB557B907B49DCFEAE377E99716D554ABB7">CreateRet</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#26252362143F69DF738FA51CDF85E58A6819FC00">CreateAggregateRet</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#4B01D12E96DA96083105C2C1D7C1CDE2B6B49655">CreateBr</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#98C5A2C153E3F27C6E2AA032D016881644481412">CreateCondBr</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#F334046E5D322F48C1F255CF163AE45608FCD785">CreateCondBr</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#F035014CE9C1E5C86936CF75C7BBF3CEFFD1A0F7">CreateSwitch</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#BE421ECD74BD331AA8AE9CC15C44AC513792CA59">CreateIndirectBr</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#BEE81C1204AB3C990A74AC3EB059970272820FA7">CreateInvoke</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#5D6879DD4309D1A04EA37232D387939BD67BDDF3">CreateInvoke</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#7E7346E7EC9CC6A3169EF9C55421927C79734248">CreateInvoke</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#03076AAA45B2B1642CC56AE428DEE89014420574">CreateInvoke</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#3CFE3E37F2469C93D7A4FB9091B3AF4188F2B51F">CreateCallBr</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#7008DC3DE9329A224279C4933BA5788F2AA8DE7A">CreateCallBr</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#32E7CA327A3208E90806A1241AED384245D36761">CreateCallBr</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#A125335EAFDB7B909A9944C295E8459159940E97">CreateCallBr</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#7F2B1BD45ED2D22397F0FD0E283C533C538FCF36">CreateResume</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#3D90B5AD0179385F3764F4D217CC9D3C24BCCAB4">CreateCleanupRet</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#B3812C13E15D10B69A158826AEB6B1A11C9DD2A5">CreateCatchSwitch</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#BF825B62DF6D41C840C31C866D21960652DF038F">CreateCatchPad</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#153FC94D4B6845DB87B4BE216263D38B0AB4D678">CreateCleanupPad</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#C140323A70D26CDA3D11E060BE511B14D386ABB6">CreateCatchRet</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#00CDF91FA60C7809906642E60BDF072126FB841D">CreateUnreachable</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#EA65B601682A32BAC3D2D6CAEF4A76092E9F841C">CreateInsertNUWNSWBinOp</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#75A7D122B466C28C109C77C39A3FED983E8EE533">setFPAttrs</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#CF7DA0B3AD4B9FD5AC47300CC1F4EE61F3A09A5A">getConstrainedFPRounding</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#6CF2136B8439375287BE5E36357FC97B07B37130">getConstrainedFPExcept</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#6F0347DB4E8E146967A175B02281F0D4485F5D0B">getConstrainedFPPredicate</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#5794DCC12834D6EE9BFCC2BE098C4AC32DEBD634">CreateAdd</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#42249D1476752D3987EF9112B4D91246D7FCBC8F">CreateNSWAdd</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#F0C94416E7908B591DB634DD41FC9D8001CF6A4B">CreateNUWAdd</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#20306F7D6E90EA312CD3F6DC6CA3AFFC6FDEF087">CreateSub</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#4D91A593A7DFDF1A48DE47695B982355042CAFFE">CreateNSWSub</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#267811E71E81825DF123A0F692E7F80490B76364">CreateNUWSub</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#973A0EDAE21A10916FCD0F7D856C37B83DDF7815">CreateMul</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#0D84A219DC5F7E73BA1F9938AD78FB3B350677CC">CreateNSWMul</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#86E1254B67AAAEC5378D5B7C8DEC93592465CA72">CreateNUWMul</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#3F3ABEA89D9A9BE305B44834E7D385D98C079ACF">CreateUDiv</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#19DD19877C8C8DE8B14A4A84D845228EB4B42795">CreateExactUDiv</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#5BD5C3A7662531157E72D51A75D04D7F9639917A">CreateSDiv</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#9F8B951AF0C2C2BE50AD524245B0390F34368D74">CreateExactSDiv</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#24E04A3700F4056DA4BD97FE170A09F456000BD3">CreateURem</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#2D6DD93A872F7460C989F54520073BC5EF7BED54">CreateSRem</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#4CC52FC2C03BD5811ED8DBD67705374F3A6071B4">CreateShl</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#5EEFFB2B6D961BB4984EFE9B5B82E2684E7ACADF">CreateShl</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#AD5D918885895285B68DE29E4A8CDB190FB66F62">CreateShl</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#A73D211F670EE57A8186115D92ECDC4EC4379CD1">CreateLShr</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#32E915DAA9E3C4D303A685E7DE95F07FB5FE1B57">CreateLShr</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#AE1319AA2C00235FCE74793B3629160685F52ADD">CreateLShr</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#23C6A2471F9C47D0759F987D9AFDE29DA1531DDB">CreateAShr</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#64110B82B0612464813690D2010967A273962C02">CreateAShr</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#10FEEDC3CCA238122F8CB1BBF8CF9CFCD5076A07">CreateAShr</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#EA440AF5ACFBE183465213F47588E6ACCE3EA644">CreateAnd</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#8F7B06F3A7846424C7143AA26E785012054150DA">CreateAnd</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#C948ACD21699F43ED4B98384F9CAB2985BD32476">CreateAnd</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#E8B637343C3B8B2157570CDAEE71D97C785C57D1">CreateAnd</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#462CE13BAE129DC738B0638D38306E753CB351D5">CreateOr</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#D5DA2247FFB9C8A42995383587D7CD60C0B0DC9F">CreateOr</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#50912D30FFE8C34C655EED0638F8F93007F1B252">CreateOr</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#08F86857A072EC02672749A8B2092BEC35C7330E">CreateOr</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#0B7655902564EB95296001D682729BBE65D33D62">CreateXor</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#B33F1BD91C6F0B202EA85EE3CA98707AFBA4D9B7">CreateXor</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#30AE2284246337869F72C60134F940C3DDE4F95A">CreateXor</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#C31552839C8F36D7DF00E3385A0878881F60A9B2">CreateFAdd</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#4344C28B008B8A0F970F8F1195AAC109AC4961C5">CreateFAddFMF</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#2FC1730E384A7FE884D690E4900DD916EF51C192">CreateFSub</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#83688C9995C858EEFD8EA1A5E082876B0B964C24">CreateFSubFMF</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#104D35B33B9077053A3624C8BEDE166216EED13E">CreateFMul</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#B76C381EDD1D9E7DAD3BE068DD79C05CB889EEA4">CreateFMulFMF</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#1A7B4E74828DC329425BC239F44A0449F437B47B">CreateFDiv</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#034009111830BDDC758D7D42342558D9C69C0E49">CreateFDivFMF</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#0ED70C8AC26312F909FFF176D683FB8876624ED4">CreateFRem</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#866BD1D284350091BCADF98FFAFE42DD95F29F37">CreateFRemFMF</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#A1DA3D9789C68C0159CD891F31521437E23DEE63">CreateBinOp</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#4D362D1760A651B5EE9D5E4F180E8719121B3083">CreateLogicalAnd</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#7FDFDE311A3A83FDEF6CBC277A51B73C056D3789">CreateLogicalOr</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#49C0499ED98015237BCEDD0871B533B4524223C8">CreateLogicalOp</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#EC78B87D4113AF1BE87AFB90E15F22A3A806AFFA">CreateLogicalOr</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#DD565D48937EB7062B6271CF8CED185061D788CB">CreateConstrainedFPBinOp</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#26C78B4C5180BD736836687A691B9C28F31C8056">CreateConstrainedFPUnroundedBinOp</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#0F250127CD8AC6DA92CDFAF1BBE8E327C1C5486E">CreateNeg</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#AF49A9AE872A898845CED5275F856A026967F9E2">CreateNSWNeg</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#1807A49C436A761FB6DB455CEABB47746DF5E9C2">CreateNUWNeg</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#DE016ADC2E6718DCC611B3819F5A5A80146D459C">CreateFNeg</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#2F2567CE9012B03220779DFF8B05A97C9C335A38">CreateFNegFMF</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#9A02C31D85B26F12A8C63DD7D3D0D91BCC994DC2">CreateNot</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#052CD5BA021170AA6FFC9848AE22B0F23CC52D04">CreateUnOp</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#74845EAF2109699798F5BDFB0C3BC8799CA6748F">CreateNAryOp</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#4DB196DD2076A25972E6732264FF7BFBE228541A">CreateAlloca</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#E9F0129458B4570903C5F4B0CFE5493445EEB421">CreateAlloca</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#980ECE9A4C0D779E04982449E30D33520ADC905A">CreateLoad</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#3493287CE97DBBDCF353ED9354EB4BC8AB3F607D">CreateLoad</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#95890BB3F7499B3E0452DEBCEAD891EFE396E798">CreateLoad</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#82A7A41D237C3B5E4D0FB3557F110338BB8BD693">CreateStore</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#C374C2A3D851C599E1B34925D2E4DDB5CE785A11">CreateAlignedLoad</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#610AFF2D7F1DBACF6DBEEC8346B1BA7B94C46293">CreateAlignedLoad</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#5A2B6A13102038ECF8D2C3C549E969F5068F2374">CreateAlignedLoad</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#2A90ED73DAC8A71C6151F6E82456999B2B603B66">CreateAlignedStore</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#16EBF906E0A19D71F039219631F2BEF28C96EDC6">CreateFence</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#AEDB082818F10CC11FB025F8D382D10CBD232FF6">CreateAtomicCmpXchg</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#275A574BE6CDF8B53D168D64647DBFE14986F0C0">CreateAtomicRMW</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#BFA8D09E3FB76DA12CB8812EA7386A74CD09D3D2">CreateGEP</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#3DD3D449AAC5202FD9F3A7ECFFAA373E8313104B">CreateInBoundsGEP</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#5C7713DC72F46DBA8BE95B41328F22B646F96CCC">CreateConstGEP1_32</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#D71C7603625265AE05DB71B4883352F7DDDE987E">CreateConstInBoundsGEP1_32</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#D694178978CDFBDA1AD39F410889D130D7A9126F">CreateConstGEP2_32</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#E88AAEB3837F174F167E259D11467A92FA9A40F2">CreateConstInBoundsGEP2_32</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#66A1DA29122AFCC1A508BA0AE686DB2505EEDFC6">CreateConstGEP1_64</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#E5AF3EEB7F6F36F86D763C734F722DADD72E8422">CreateConstInBoundsGEP1_64</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#924BF82A150029C9A505DDA7A071915233C170EC">CreateConstGEP2_64</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#22E9B2AE7FA5636F390116329380E094B4CF6097">CreateConstInBoundsGEP2_64</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#82F967A2A4B62548F3560653B08B0CF275C4DC4A">CreateStructGEP</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#0A2DB2C14C3AB7EBC5FB6B2513C054CEFA6A2C67">CreatePtrAdd</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#7759DEB5A003832EBE2F07B7B535E58AD97B3278">CreateInBoundsPtrAdd</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#3295E0BD410846E948E93B8AAAE77CF7D8FE1BE8">CreateGlobalStringPtr</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#2EAFA583E19E39935BEABCCC5162729D829DF117">CreateTrunc</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#7539EA2EAA7734282568CB434CBEE8206CF6320A">CreateZExt</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#07F38AB7A724F65F7D1BA5CB8077C0B1D4DAF44C">CreateSExt</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#E0651DECEF48105ABF7620171712CC95EBB9EAB3">CreateZExtOrTrunc</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#414F839FCEF451568161C84DE8646D976671C0D4">CreateSExtOrTrunc</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#AF8F5799B5AD5E21B592E0C42FB6D095FB9EA610">CreateFPToUI</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#8465063A16F3C775538000AE291C2DB102BA645A">CreateFPToSI</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#0B0A3545BBAB1BC1F2CAFEB2B7023EBC044E24E1">CreateUIToFP</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#5CABBDBD2180DC9E13B111B36D81F9FEA057A029">CreateSIToFP</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#57958F78F1399BE75B24CB53067B1C3BD5F59B76">CreateFPTrunc</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#931EA78A0FBDD88508149C98543199660718B5D7">CreateFPExt</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#D6D52DC1D9F5249D0C44ED076F58C370639770B8">CreatePtrToInt</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#086FDB993DFE15DBFCD0FFA2C826A75AF1F7CBAE">CreateIntToPtr</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#7B3916812EF69CF525A713724FE038CD0467D435">CreateBitCast</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#336EE9CA19D6D306D5AA36EE855495937F84AE04">CreateAddrSpaceCast</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#D60B60A1C8126747834D70241939AC545B445F9F">CreateZExtOrBitCast</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#A9B3BCFD50B2E7E64538B9FFB2D17F3D8BF55A00">CreateSExtOrBitCast</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#E181454DE0EA71FDFF2E7FF7B3A69E1F0DDD2CA6">CreateTruncOrBitCast</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#3D62A0C9D718C8102A5CA5761BB10DDAD83EE02E">CreateCast</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#C84EF4C90567C6F965DB5874C67C166ECCDD3D6B">CreatePointerCast</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#D75866098E8F28D62B29B50D618A0A4A4BF0FE99">CreatePointerBitCastOrAddrSpaceCast</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#D4341186D76745D3A5E99B591F1A23D5850CF816">CreateIntCast</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#D318413084BA977AD39BFC25BD31BEF1B7AEE70D">CreateBitOrPointerCast</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#89C02823BC3F7D5947A91A4A58931E36302A7D89">CreateFPCast</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#CAC34A0415557C4CDAE87B608CDD1C8DA830DA60">CreateConstrainedFPCast</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#6A483C4F4F7EE547691AC9F4E403A856B6CB4F4D">CreateIntCast</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#8271A453CCC676ADD172F3938B72FED95E3DBA19">CreateICmpEQ</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#3FF4EE15AC0D18C7D579400C9010E7C0E34C6714">CreateICmpNE</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#2B9B54DAC89F3D690E59C635374A61342B618A86">CreateICmpUGT</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#9B3CD7820D819C6EB72A42ADE7B20A0FF1D5D4B4">CreateICmpUGE</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#8E5EA35B96304FA347FD5B58F199D296C3466C0C">CreateICmpULT</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#5BA88F185C6731F75B4116912B710A27ECA95553">CreateICmpULE</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#D667E45FF586B1B545C5359710D25727E1F0CEB0">CreateICmpSGT</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#10F8C88AC2C67FA3CD8D9DF3CF0A4F5B463FE7A2">CreateICmpSGE</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#6E527737E7CBFA8EB2843063514F90049DBF4566">CreateICmpSLT</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#C6FE59F10585CC6361A3C87A04A1CABC0B587D6D">CreateICmpSLE</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#8A1BF730533A5ED6FEF76B91F9FC96813F2250A2">CreateFCmpOEQ</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#4951FF4970BEB4023BFE8FB130C435D5880A8A21">CreateFCmpOGT</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#543482D662A048E0676A0EE21337565CFA4E1E82">CreateFCmpOGE</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#D3A2DD047A1C9B72E89C87C7B2F0CE4E57E7DBD1">CreateFCmpOLT</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#BB8E6FDBF575AA4646B9697F36C3ACFDE55F0D4A">CreateFCmpOLE</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#F47A0E3885343703D2C410C5CFBDAF5A56485D7B">CreateFCmpONE</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#99EFD849152C80552618205ED4BE302182BFFEDC">CreateFCmpORD</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#64E57EFE9216C93E00BDDCCF900CEF6DA3440030">CreateFCmpUNO</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#AAAB16137C3A4728466DF6361A0D163001CF98BF">CreateFCmpUEQ</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#42A3478D3FCD79FEEBF5EC95FC48562C36DC3C7A">CreateFCmpUGT</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#C1FA661F878460A8C8904541AAF645D194836F29">CreateFCmpUGE</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#51663044C580774E7B6DB5853C5BDD0CC5D5F12F">CreateFCmpULT</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#75CF42CAABFF13EABDA55701E2AFB76BFFD5EDB4">CreateFCmpULE</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#CCF6BD679654FE719BDDD157F2E27371EFDB8ECE">CreateFCmpUNE</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#FC916D85F96E8E885BE6BF20DCF082EB9545F935">CreateICmp</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#92373D427FF82971335DE3000E4D07270CADA1A0">CreateFCmp</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#C87E27EC0D1A033CAF7D9C784AC787F2328FAF88">CreateCmp</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#8D76D9C28BB35529DD307CB5EA3787F8DC3B9516">CreateFCmpS</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#9A1F1F8A8CDFA43754C168768C69CFB6D11DC109">CreateFCmpHelper</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#56EF506885D330ED1EAD6B4863BCE4C5491E03E9">CreateConstrainedFPCmp</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#5C93EAE246E76072BA06A2CD2E89EDC4C99C3544">CreatePHI</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#C305C69106D200099B8265F4280F1AF1FB615A28">createCallHelper</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#7063D15FFABB3B8791148FD883046435B6C9050C">CreateCall</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#0284BCE83612FE633BDD205303E73EEEAF3FC390">CreateCall</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#4DDAF6B80A179C9CE293F80B58AC76319D0CED9D">CreateCall</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#1EE2C5CB14541F121DCB86A30860BC395F11038F">CreateCall</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#6D8A9D88437A861633818075A460A0EFA4E9B42F">CreateConstrainedFPCall</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#92FB100E5F2843D6F7E91066A83B22AC3CB0ECBB">CreateSelect</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#C3F0167A489C7AC19DD3C764720A7C51144A7C7D">CreateVAArg</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#06723D155903AC805AC07828B32E78BF37A3384F">CreateExtractElement</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#C82B93EFFEFD7D7175A2B0042EE2740257A802DE">CreateExtractElement</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#026579C6634D756DBEDD7208E3A12131C20938C9">CreateInsertElement</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#6A871734AD81B185772B8C4510AC77126331EFA2">CreateInsertElement</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#B78BBA5ADF71CD70A6AF6A920D15E3E047FBED4B">CreateInsertElement</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#004D59C8B6353DE8586EA2B91615D068FC878064">CreateInsertElement</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#004CD4D1719740C6C5E9B8B97D000E60634E09AC">CreateShuffleVector</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#53CB18A1A672B1668DE85F36A3ADAED110F3BF28">CreateShuffleVector</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#E44BB67A81BBB0F603F0653EB606D61538C26421">CreateShuffleVector</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#0CAA626D9C5055A8713D6BE77B01D0962BB4AC08">CreateExtractValue</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#58F6731B40AEB30C2653ABF65F8D5C2E8FDEFC98">CreateInsertValue</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#F0517B592D9F98EF252AFAA38CBAEB033AB26C01">CreateLandingPad</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#48D1B6342E6036C90D09D4DC00EDE6A5AF1D4FA2">CreateFreeze</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#4A0EBEB9114A1CC93BCB97047C905EFD18D45348">CreateIsNull</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#8D75361800B066F30FB5D524C387781FDCCE54A1">CreateIsNotNull</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#87A15419BD63E5E45692FF7507DD21FB877F9DE1">CreateIsNeg</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#BF72FFBDDD93029AEE567FA48D540AF8754B3DBC">CreateIsNotNeg</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#D840B592054D3CBBE4EC79F10F95AEFADDB1CAA8">CreatePtrDiff</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#C0562CD0DFCA8413F6C43E5DBEC37549ED89DAFC">CreateLaunderInvariantGroup</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#3CA341300A4D283D56321E70C134179F89574AE9">CreateStripInvariantGroup</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#030C365DDA94710547FA54111FA9B8BA774409D2">CreateVectorReverse</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#9296F82F13AA263A3F8783FD95985472963B5999">CreateVectorSplice</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#1504CCFC0CD896D88265E5B80A14C78898CFAF20">CreateVectorSplat</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#24EF65D20A997020E60C77671731E3EC78EC359D">CreateVectorSplat</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#A7811AAD742AD4BB06407C4887142CAD2E301F88">CreatePreserveArrayAccessIndex</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#93C69A846AA178ECA9E8DEC336F6DB70F94ED9DD">CreatePreserveUnionAccessIndex</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#23642E9B3A114B545C8523EBC77B4D012DEEEDBC">CreatePreserveStructAccessIndex</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#107C8C54A0D9B8DCEFA199AD52D9FE17AB30C148">createIsFPClass</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#90FD5B5D22D2F1DA70C10C8FA8A18C30E92FC0AD">CreateAlignmentAssumptionHelper</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#34095886E08C4471A3AA704F4A06B35DDE0AC373">CreateAlignmentAssumption</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href="#19AAA5F8AADBD6A74CBDD71E7C35CC1DEEAC0D11">CreateAlignmentAssumption</a>
+            </span>
+          </li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+</main>
+<footer>
+  <span class="no-break">clang-doc version 19.0.0git (https://github.com/llvm/llvm-project.git 1a988869319bb4cfe04b3d2618818180b3cfb28c)</span>
+</footer>
+</body></html>
