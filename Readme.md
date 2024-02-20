@@ -159,7 +159,7 @@ From my brief review of the clang doc source code it seems the current tool supp
 - Enum
 - Namespaces
 
-I think all the code that clang-doc is aware is defined [here](https://github.com/llvm/llvm-project/blob/main/clang-tools-extra/clang-doc/Representation.h)
+From my brief review of the clang-doc source code all C/C++ construct clang-doc is aware of is defined [here](https://github.com/llvm/llvm-project/blob/main/clang-tools-extra/clang-doc/Representation.h)
 
 I am not too familiar with the clang-doc codebase so maybe one of the mentors can corrent me if I am wrong. Additionally I would like more inputs from one of the mentors on what c++ constructs would be nice to add to clang-doc.
 
