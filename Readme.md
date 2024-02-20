@@ -35,8 +35,6 @@ output will look bad compared to if the source code were written with their synt
 
 ![alt text](./hdocScreenshot.PNG "Title")
 
-This screen shot was taken directly from the hdoc website LLVM is the demo project the website uses to show off the capability of hdoc you can see more [here](https://hdoc.io/docs/features/api-docs/)
-
 #### Comments
 
 Hdoc was built with interopability with Doxygen in mind so it supports a small subset of doxygen commands which includes
@@ -52,7 +50,7 @@ I like the overall design of the documentation although I dislike the fact that 
 
 #### What clang-doc can learn from Hdoc
 
-Hdoc features an out of the box search functionality that doxygen doesn't have I believe hdoc would provide a nice reference implementation for the search functionality for html output of clang-doc
+Hdoc features an out of the box search functionality that doxygen doesn't have which I believe would provide a nice reference implementation for the search functionality for html output of clang-doc
 
 
 
@@ -109,12 +107,11 @@ void set_f(float f);
 
 I find the ability to the programmer a set of directives to directly control the output of generation interesting. It could be interesting to explore directives that directly controls the meta aspects of documentation generation. 
 
-I like the ability to physicsally group related functions and class using the \modules directive to my knowledge I don't think doxygen has that feature
+I like the ability to physically group related functions and class using the \modules directive to my knowledge I don't think doxygen has that feature
 
 ### Subdoc generation output 
 
 - TODO: to be added
-
 
 ### Doxygen generation output ([link](https://llvm.org/doxygen/classllvm_1_1IRBuilderBase.html))
 
@@ -131,11 +128,11 @@ Doxygen supports alot of features I think the overall generated doc looks a bit 
 
 Here are some things I like about doxygen that clang-doc could benefit from
 
-- Doxygen has really great navigability also all defined paramaters for class are hyperlinked to each other so If you want know what is the Value type from the method Insert you can just click on it
+- Doxygen has really great navigability, virtually all defined paramaters are hyperlinked to each other so If you want know what is the Value type from the method Insert you can just click on it this is something clang-doc is lacking
 
 - The inheritance diagram on display is really impressive
 
-- Doxygen also includes inherited class members under
+- Doxygen also includes a section for inherited member functions. I think this could be a nice feature to add to clang doc
 
 
 ### Clang Doc Generation Output ([link](./clangDocIRbuilderBase.htm))
@@ -147,9 +144,6 @@ Here are some things I like about doxygen that clang-doc could benefit from
 The css for the output html is not really great. The scroll bars are awkwardly placed. And the private members are exposed in the documentation which I think by default should not happen unless specified otherwise by a developer. 
 
 The navigation bar is to the left which I don't think looks very nice. I think it should located on the right but that is a matter of personal taste.
-
-
-
 
 # Areas for Improvement
 
