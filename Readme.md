@@ -31,7 +31,7 @@ Its worth noting that Standardese and Subdoc were designed with their owned docu
 output will look bad compared to if the source code were written with their syntax in mind
 
 
-### Hdoc Generation output ([link](./hdocIRBuilderBase.htm))
+### Hdoc Generation output ([link](https://docs.hdoc.io/hdoc/llvm-project/rE5A4CCEEE8EE3C7D.html))
 
 ![alt text](./hdocScreenshot.PNG "Title")
 
@@ -56,7 +56,7 @@ Hdoc features an out of the box search functionality that doxygen doesn't have I
 
 
 
-### Standardese Generation output ([link](./standardeseScreenshot.PNG))
+### Standardese Generation output ([link](./doc_IRBuilder.html))
 
 ![alt text](./standardeseScreenshot.PNG "Title")
 
