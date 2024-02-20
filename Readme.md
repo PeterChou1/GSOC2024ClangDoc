@@ -164,7 +164,7 @@ From my brief review of the clang doc source code it seems the current tool supp
 
 I think all the code that clang-doc is aware is defined [here](https://github.com/llvm/llvm-project/blob/main/clang-tools-extra/clang-doc/Representation.h)
 
-I am not too familiar with the clang-doc codebase so maybe one of the mentors can corrent me if I am wrong. Additionally I would like more inputs from one of the mentors on what constructs to add to clang-doc.
+I am not too familiar with the clang-doc codebase so maybe one of the mentors can corrent me if I am wrong. Additionally I would like more inputs from one of the mentors on what c++ constructs would be nice to add to clang-doc.
 
 
 ## Proposal 1: Improve HTML generation
@@ -198,20 +198,18 @@ I think the current css output right now is barely servicable it can be signific
 
 I have experience working with figma mockups I could present a few mockups for further feedback.
 
-## Proposal 2: Improve clang -
-
-## Proposal 3: Add markdown support in comments
+## Proposal 2: Add markdown support in comments
 
 In original [RFC](https://discourse.llvm.org/t/rfc-clang-doc-proposal/47035/3) for clang-doc, it was mentioned that markdown style comment would be a useful future extension to my knowledge this is still not supported.
 
 I suspect this would require a significant amount of effort to write a markdown parser but it could be an interesting project
 
-## Proposal 4: Improve clang-doc preformance
+## Proposal 3: Improve clang-doc preformance
 
 When I generated run clang-doc on the full llvm source code with compile_commands.json my computer hangs and freezes I'm not sure what is happening 
 (Needs more investigation)
 
-## Proposal 6: Add Diagram support
+## Proposal 4: Add Diagram support
 
 Doxygen has diagram visualization it would be interesting to see if clang doc could generate something similiar. I suspect this will require a huge amount of work to add this though 
 
