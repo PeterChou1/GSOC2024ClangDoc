@@ -45,7 +45,7 @@ Hdoc was built with interopability with Doxygen in mind so it supports a small s
 @tparam
 ```
 
-I like the overall design of the documentation although I think a good
+I like the overall design of the documentation although I dislike the fact that there isn't any navigable menu to jump around to the side of the page.
 
 #### What clang-doc can learn from Hdoc
 
