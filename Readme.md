@@ -167,33 +167,31 @@ I am not too familiar with the clang-doc codebase so maybe one of the mentors ca
 ## Proposal 1: Improve HTML generation
 
 Currently clang-docs html generation is quite lacking when compared to the alternatives tools.
-To that end there are several steps I think there are several steps we can take to 
+To that end there are several steps I think there are several improvements we can take to 
 incrementally improve the html output of the tool
 
+1.  Add support /param in HTML output
 
+    The markdown output for clang-doc supports /param but not in the html output
 
-### Step 0: Add support /param in HTML output
+2.  Add namespace navigation
 
-The markdown output for clang-doc supports /param but not in the html output
+    hdoc and doxygen both support namespace navigation, at the top of the page I think this would improved the navigability of the output html.
 
-### Step 1: Add namespace navigation
+3. Add search support
 
-hdoc and doxygen both support namespace navigation, at the top of the page I think this would improved the navigability of the output html.
+    Doxygen supports search but it doesn't work out of the box. As a result the LLVM auto generated docs does not
+    have a search bar I think this could be one of the advantages for encouraging the switch to clang-docs. Hdoc has a nice search functionality so it we have a nice reference implementation to consult when implementing this feature
 
-### Step 2: Add search support
+4. Remove private members from documentation
 
-Doxygen supports search but it doesn't work out of the box. As a result the LLVM auto generated docs does not
-have a search bar I think this could be one of the advantages for encouraging the switch to clang-docs. Hdoc has a nice search functionality so it we have a nice reference implementation to consult when implementing this feature
+    I think unless explicitly specified by the programmer that private functions should be excluded in the outputed documentation. This is a problem with markdown output as well 
 
-### Step 3: Remove private members from documentation
+5. Refactor css code to make the generated output look nicer
 
-I think unless explicitly specified by the programmer that private functions should be excluded in the outputed documentation. This is a problem with markdown output as well 
+    I think the current css output right now is barely servicable it can be significantly improved to look easier on the eyes. This might be something would require the input of the mentor and community to make look better.
 
-### Step 3: Refactor css code to make the generated output look nicer
-
-I think the current css output right now is barely servicable it can be significantly improved to look easier on the eyes. This might be something would require the input of the mentor and community to make look better.
-
-I have experience working with figma mockups I could present a few mockups for further feedback.
+    I have experience working with figma mockups I could present a few mockups for further feedback.
 
 ## Proposal 2: Add markdown support in comments
 
