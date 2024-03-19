@@ -243,7 +243,7 @@ This section details a list of improvements that I plan to add to clang-doc, the
   The current offering of C++ documentation generators gives developers control of the output through special
   documentation commands embedded directly in source file or through initialization files. 
 
-  The problem is special commands that control the output of the look such as **\p** or **\b** in doxygen is that it directly pollutes the documentation making it less readable to the developer reading comments from source. And sometimes special commands documentation can produce unexpected results or may not even be fine grain or specific enough for the developer.
+  The problem is special commands that control the output of the look such as **\p** or **\b** in doxygen is that it directly pollutes the documentation making it less readable to the developer reading comments from source. And sometimes special documentation commands can produce unexpected results or may not even be fine grain or specific enough for the developer.
 
   On the other hand ini files often don't give fine if control of the documentation output no matter how much
   configuration options are added.
