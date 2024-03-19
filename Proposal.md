@@ -26,6 +26,8 @@ This section details a list of improvements that I plan to add to clang-doc, the
    Clang-doc relies on Clang-AST comment parser and lexer defined here and here which currently does not support markdown parsing. By extending the Clang-AST comment parser to include markdown we will able to support not 
    only clang-doc but potentially other tools leveraging Clang-AST to build a documentation generator.
 
+   Here are the initial markdown structures I plan to add to the clang-ast
+
    - Headers
       ```md
       #HEADER
