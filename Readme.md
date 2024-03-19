@@ -5,7 +5,7 @@ Clang doc is a documentation generation tool for the llvm project built ontop of
 This is document is preliminary research to explore avenues to improve [clang-doc](https://clang.llvm.org/extra/clang-doc.html) usability
 
 
-This document is written in reponse to the project proposal for GSOC to improve the usablility of clang-doc:
+This document is written in response to the project proposal for GSOC to improve the usablility of clang-doc:
 [link](https://discourse.llvm.org/t/improve-clang-doc-usability/76996)
 
 
